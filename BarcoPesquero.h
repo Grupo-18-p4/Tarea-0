@@ -1,6 +1,6 @@
 #ifndef BarcoPesquero
 #define BarcoPesquero
-class BarcoPesquero
+class BarcoPesquero : public Barco
  {    
      private:  
      int capacidad;  //field or data member     
