@@ -9,11 +9,11 @@ class BarcoPesquero : public Barco
      public:
      
      BarcoPesquero();
-     BarcoPesquero(String id,int capacidad,int carga);//uso el id de barco asi no mas?
+     BarcoPesquero(String nombre,String id,int capacidad,int carga);
      BarcoPesquero(int capacidad);
      BarcoPesquero(int carga);
      
-     int getCapacidad();  //necesitan parametros de entrada? onda el id o no?
+     int getCapacidad();
      int getCarga();
      
      void arribar(float cargaDespacho); 
