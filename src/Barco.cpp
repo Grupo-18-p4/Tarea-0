@@ -7,6 +7,10 @@ Barco :: Barco(String id, String nombre){
     this->nombre = nombre;
 }
 
+Barco : Barco(String nombre){
+    this->nombre = nombre;   
+}
+
 nombre Barco :: getnombre(){
     return this->nombre;
 }
