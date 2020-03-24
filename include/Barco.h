@@ -9,6 +9,7 @@ class Barco
      public:
      Barco();
      Barco(String id, String nombre);
+     Barco(String nombre);
  
      getnombre();
      getid();
