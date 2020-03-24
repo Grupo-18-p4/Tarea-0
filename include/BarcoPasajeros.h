@@ -9,7 +9,9 @@ class BarcoPasajeros : public Barco
      public:
      
      BarcoPasajeros();
-     BarcoPasajeros(String id,int cantPasajeros,TipoTamanio tamanio);
+     BarcoPasajeros(int cantPasajeros);
+     BarcoPasajeros(TipoTamanio tamanio);
+     BarcoPasajeros(String nombre, String id,int cantPasajeros,TipoTamanio tamanio);
      
      int getCantPasajeros();
      TipoTamanio getTipoTamanio();
