@@ -10,6 +10,8 @@ class BarcoPesquero : public Barco
      
      BarcoPesquero();
      BarcoPesquero(String id,int capacidad,int carga);//uso el id de barco asi no mas?
+     BarcoPesquero(int capacidad);
+     BarcoPesquero(int carga);
      
      int getCapacidad();  //necesitan parametros de entrada? onda el id o no?
      int getCarga();
