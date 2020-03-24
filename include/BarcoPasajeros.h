@@ -14,7 +14,7 @@ class BarcoPasajeros : public Barco
      BarcoPasajeros(String nombre, String id,int cantPasajeros,TipoTamanio tamanio);
      
      int getCantPasajeros();
-     TipoTamanio getTipoTamanio();
+     TipoTamanio getTamanio();
      
      void arribar(float cargaDespacho); //los barcos de pasajeros no poseen carga, no se realizan cambios
  };
