@@ -7,6 +7,12 @@ class Barco
      String id; //field or data member  
      
      public:
+     Barco();
+     Barco(String id, String nombre);
+ 
+     getnombre();
+     getid();
+ 
      void arribar(float cargaDespacho); 
  };
  #endif
