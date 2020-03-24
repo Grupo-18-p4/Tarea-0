@@ -9,11 +9,11 @@ BarcoPesquero :: BarcoPesquero(string nombre,string id, int capacidad, int carga
 }
 
 BarcoPesquero :: BarcoPesqero(int capacidad){
-    this capacidad = capacidad;
+    this->capacidad = capacidad;
 }
 
 BarcoPesquero :: BarcoPesquero(int carga){
-    this carga = carga;
+    this->carga = carga;
 }
 
 capacidad BarcoPesquero :: getCapacidad(){
