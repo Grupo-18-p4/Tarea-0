@@ -7,7 +7,14 @@ class BarcoPesquero : public Barco
      int carga; //carga = carga - cargaDespacho  
 
      public:
-
+     
+     BarcoPesquero();
+     BarcoPesquero(String id,int capacidad,int carga);//uso el id de barco asi no mas?
+     
+     int getCapacidad();  //necesitan parametros de entrada? onda el id o no?
+     int getCarga();
+     
      void arribar(float cargaDespacho); 
+     
  };
  #endif
