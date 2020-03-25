@@ -3,18 +3,19 @@
 
 #include "DtFecha.h"
 #include <iostream>
+using namespace std;
 
 class DtPuerto {
 	private:
-		std::string id;
-		std::string nombre;
+		string id;
+		string nombre;
 		DtFecha fechaCreacion;
 		int cantArribos;
     public: 
     	DtPuerto();
-    	DtPuerto(std::string id, std::string nombre, DtFecha fechaCreacion, int cantArribos);
-    	std::string getid();
-    	std::string getnombre();
+    	DtPuerto(string id, string nombre, DtFecha fechaCreacion, int cantArribos);
+    	string getid();
+    	string getnombre();
     	DtFecha getfecha();
     	int getcant();
 }
