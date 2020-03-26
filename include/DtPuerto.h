@@ -6,19 +6,19 @@
 using namespace std;
 
 class DtPuerto {
-	private:
-		string id;
-		string nombre;
-		DtFecha fechaCreacion;
-		int cantArribos;
+    private:
+        string id;
+        string nombre;
+        DtFecha fechaCreacion;
+        int cantArribos;
     public: 
-    	DtPuerto();
-    	DtPuerto(string id, string nombre, DtFecha fechaCreacion, int cantArribos);
-    	string getid();
-    	string getnombre();
-    	DtFecha getfecha();
-    	int getcant();
-}
+        DtPuerto();
+        DtPuerto(string id, string nombre, DtFecha fechaCreacion, int cantArribos);
+        string getid();
+        string getnombre();
+        DtFecha getfecha();
+        int getcant();
+};
 
 #endif
 
