@@ -1,22 +1,26 @@
-#ifndef BarcoPesquero
-#define BarcoPesquero
+#ifndef _BarcoPesquero_
+#define _BarcoPesquero_
+
+#include "Barco.h"
+
+
 class BarcoPesquero : public Barco
  {    
      private:  
-     int capacidad;  //field or data member     
-     int carga; //carga = carga - cargaDespacho  
+        int capacidad;   
+        int carga; //carga = carga - cargaDespacho  
 
      public:
      
-     BarcoPesquero();
-     BarcoPesquero(String nombre,String id,int capacidad,int carga);
-     BarcoPesquero(int capacidad);
-     BarcoPesquero(int carga);
-     
-     int getCapacidad();
-     int getCarga();
-     
-     void arribar(float cargaDespacho); 
+        BarcoPesquero(string nombre,string id,int capacidad,int carga);
+        
+        void setCapacidad(int capacidad);
+        void setCarga(int carga);
+        
+        int getCapacidad();
+        int getCarga();
+        
+        void arribar(float cargaDespacho); 
      
  };
  #endif

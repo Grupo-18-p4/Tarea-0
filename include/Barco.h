@@ -1,19 +1,23 @@
-#ifndef Barco
-#define Barco
+#ifndef _Barco_
+#define _Barco_
+
+#include <iostream>
+using namespace std;
+
 class Barco
  {    
      private:  
-     String nombre;  //field or data member     
-     String id; //field or data member  
+        string nombre;   
+        string id; 
      
-     public:
-     Barco();
-     Barco(String id, String nombre);
-     Barco(String nombre);
- 
-     getnombre();
-     getid();
- 
-     void arribar(float cargaDespacho); 
+    public:
+       
+        Barco(string id, string nombre);
+        Barco(string nombre);
+
+        string getnombre();
+        string getid();
+    
+        void arribar(float cargaDespacho); 
  };
  #endif
