@@ -18,6 +18,6 @@ class Barco
         string getnombre();
         string getid();
     
-        void arribar(float cargaDespacho); 
+        virtual void arribar(float cargaDespacho); 
  };
  #endif
