@@ -1,26 +1,29 @@
-#include ".../include/Barco.h"
-#include <iostream>
+#include "../include/BarcoPesquero.h"
 
-BarcoPesquero :: BarcoPesquero();
 
-BarcoPesquero :: BarcoPesquero(string nombre,string id, int capacidad, int carga): Barco(nombre,id){
+
+BarcoPesquero::BarcoPesquero(string nombre,string id, int capacidad, int carga): Barco(nombre,id){
     this->capacidad = capacidad;
     this->carga = carga;
-}
+};
 
-BarcoPesquero :: BarcoPesqero(int capacidad){
+void BarcoPesquero::setCapacidad(int capacidad){
     this->capacidad = capacidad;
-}
+};
 
-BarcoPesquero :: BarcoPesquero(int carga){
+void BarcoPesquero::setCarga(int carga){
     this->carga = carga;
-}
+};
 
-capacidad BarcoPesquero :: getCapacidad(){
+int BarcoPesquero::getCapacidad(){
     return this->capacidad;
-}
+};
 
-carga BarcoPesquero :: getcarga(){
+int BarcoPesquero::getCarga(){
     return this->carga;
+};
+
+void BarcoPesquero::arribar(float cargaDespacho){
+    this->carga = this->carga - cargaDespacho;
 }
 

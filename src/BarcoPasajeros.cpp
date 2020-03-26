@@ -1,25 +1,24 @@
-#include ".../include/Barco.h"
-#include <iostream>
+#include "../include/BarcoPasajeros.h"
 
-BarcoPasajero :: BarcoPasajero();
 
-BarcoPasajero :: BarcoPasajero(string nombre,string id, int cantPasajeros, TipoTamanio Tamanio): Barco(nombre,id){
+
+BarcoPasajeros::BarcoPasajeros(string nombre,string id, int cantPasajeros, TipoTamanio tamanio): Barco(nombre,id){
     this->cantPasajeros = cantPasajeros;
-    this->Tamanio = Tamanio;
+    this->tamanio = tamanio;
 }
 
-BarcoPasajero :: BarcoPesqero(int cantPasajeros){
+void BarcoPasajeros::setcantPasajeros(int cantPasajeros){
     this->cantPasajeros = cantPasajeros;
 }
 
-BarcoPasajero :: BarcoPasajero(TipoTamanio Tamanio){
-    this->Tamanio = Tamanio;
+void BarcoPasajeros::setTamanio(TipoTamanio tamanio){
+    this->tamanio = tamanio;
 }
 
-cantPasajeros BarcoPasajero :: getcantPasajeros(){
+int BarcoPasajeros::getCantPasajeros(){
     return this->cantPasajeros;
 }
 
-Tamanio BarcoPasajero :: getTamanio(){
-    return this->Tamanio;
+TipoTamanio BarcoPasajeros::getTamanio(){
+    return this->tamanio;
 }

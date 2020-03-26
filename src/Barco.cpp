@@ -1,20 +1,23 @@
-#include <iostream>
+#include "../include/Barco.h"
 
-Barco :: Barco();
 
-Barco :: Barco(String id, String nombre){
+Barco::Barco(string id, string nombre){
     this->id = id;
     this->nombre = nombre;
-}
+};
 
-Barco : Barco(String nombre){
+Barco::Barco(string nombre){
     this->nombre = nombre;   
-}
+};
 
-nombre Barco :: getnombre(){
+string Barco::getnombre(){
     return this->nombre;
-}
+};
 
-id Barco :: getid(){
+string Barco::getid(){
     return this->id;
-}
+};
+
+void Barco::arribar(float cargaDespacho){
+    //no hace nada, para que lo herede barcopasajeros
+};
