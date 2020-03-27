@@ -1,5 +1,10 @@
 #include "include/DtBarcoPesquero.h" //ESTO DESPUES HAY QUE SACARLO
 #include <stdlib.h>
+/////////////////////////Variables////////////////////////////////
+string id, nombre;
+int dia, mes, anio;
+
+//////////////////////////////////////////////////////////////////
 
 int main(){
     int opcion = 21;
@@ -17,6 +22,15 @@ int main(){
         switch (opcion){
                 
     case 1: //Agregar puerto
+                cout << "Ingrese el id del puerto";
+                    cin >> id;
+                //if (ya existe el id){ std::invalid_argument}
+                cout << "Ingrese el nombre del puerto";
+                    cin >> nombre;
+                cout << "Ingrese fecha de creación del puerto. Formato: (DD MM AA)";
+                cin >> dia >> mes >> anio;
+                DtFecha *FechaPuerto = new DtFecha(dia,mes,anio);
+                agregarPuerto(id,nombre,FechaPuerto);
         break;
 
     case 2: //Agregar barco
