@@ -6,7 +6,7 @@ DtFecha :: DtFecha(){
 
 DtFecha :: DtFecha(int dia, int mes, int anio){
 	if ((dia > 31) || (dia < 1) || (mes > 12) || (mes < 1) || (anio < 1900)){
-		throw std::invalid_argument("No es válido."); 
+		throw std::invalid_argument("Fecha no válida."); 
 	}
 	else{
 	this->dia = dia;
