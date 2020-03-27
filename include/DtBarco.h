@@ -7,11 +7,10 @@ class DtBarco{
         string nombre;
         string id;
     public:
-        //DtBarco(); Me parece que esto no es necesario
-        DtBarco(string nombre, string id);
         string get_id();
         string get_nombre();
-        //NO SE SI VAN LOS SETTER
+    protected: 
+        DtBarco(string nombre, string id);
 };
 
 #endif
