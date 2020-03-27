@@ -17,11 +17,13 @@ this->carga=0;
 
 
 /////////////////////////////////Destructores///////////////////////////////////////
-void eliminarArribo(&Arribo arrival){}
+void eliminarArribo(&Arribo arrival)
+{ delete(arrival->fecha);
+  delete(arrival);}
 ////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////Getters//////////////////////////////////////////
-string GetArriboFecha(Arribo arrival){return arrival->fecha}
+DtFecha GetArriboFecha(Arribo arrival){return arrival->fecha}
 string GetArriboCarga(Arribo arrival){return arrival->carga}
 
 //void agregarArribo(string idPuerto, string idBarco, float cargaDespacho) //modifica atributos del barco
