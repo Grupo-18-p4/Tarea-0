@@ -34,6 +34,19 @@ int main(){
         break;
 
     case 2: //Agregar barco
+                 cout << "Ingrese el id del barco";
+                    cin >> id;
+                //if (ya existe el id){ std::invalid_argument}
+                cout << "Ingrese el nombre del barco";
+                    cin >> nombre;
+                agregarBarco(id,nombre);
+                
+                /*
+                Dejar esto para poner dentro de agregarBarco en la capa lógica
+                cout << "De que tipo es el barco a ingresar?";
+                cout << "1)Pesquero";
+                cout << "2)Pasajeros";
+*/
         break;
                 
     case 3: //Listar puertos
