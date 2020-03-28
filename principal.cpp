@@ -27,7 +27,7 @@ int main(){
                 
                 cout << "Ingrese el nombre del puerto";
                     cin >> nombre;
-                //controlNombrePuerto(nombre);
+                controlidPuerto(nombre);
                 cout << "Ingrese fecha de creación del puerto. Formato: (DD MM AA)";
                 cin >> dia >> mes >> anio;
                 DtFecha *FechaPuerto = new DtFecha(dia,mes,anio);
