@@ -23,21 +23,21 @@ int main(){
         cin >> opcion;
         switch (opcion){
                 
-    case 1: //Agregar puert
-    /*
-                cout << "Ingrese el id del puerto";
-                    cin >> id;
-                
-                cout << "Ingrese el nombre del puerto";
-                    cin >> nombre;
-                //controlNombrePuerto(nombre);
-                cout << "Ingrese fecha de creación del puerto. Formato: (DD MM AA)";
-                cin >> dia >> mes >> anio;
-                DtFecha *FechaPuerto = new DtFecha(dia,mes,anio);
-                agregarPuerto(id,nombre,FechaPuerto);
-        break;
-    */
-    case 2: //Agregar barco
+    case 1: //Agregar puerto
+    {
+        cout << "Ingrese el id del puerto";
+        cin >> id;               
+        cout << "Ingrese el nombre del puerto";
+        cin >> nombre;
+        controlidPuerto(nombre);
+        cout << "Ingrese fecha de creación del puerto. Formato: (DD MM AA)";
+        cin >> dia >> mes >> anio;
+        DtFecha FechaPuerto(dia,mes,anio);
+        agregarPuerto(id,nombre,FechaPuerto);
+        
+    }
+    break;
+    case 2: 
                 
                 cout << "Ingrese el id del barco: ";
                 cin >> id;
