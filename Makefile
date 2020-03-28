@@ -38,7 +38,7 @@ ODIR    = obj
 
 #TESTDIR = test
 
-MODULOS = DtBarco DtBarcoPesquero DtBarcoPasajeros
+MODULOS = Arribo Barco BarcoPasajeros BarcoPesquero DtArribos DtBarco DtBarcoPasajeros DtBarcoPesquero DtFecha DtPuerto Logica Puerto TipoTamanio
 
 # cadena de archivos, con directorio y extensión
 HS   = $(MODULOS:%=$(HDIR)/%.h)
