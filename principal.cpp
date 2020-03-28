@@ -1,3 +1,4 @@
+  
 #include "include/Logica.h"
 #include <iostream>
 
@@ -28,15 +29,22 @@ int main()
 
         case 1: //Agregar puerto
         {
+            try{
             cout << "Ingrese el id del puerto";
             cin >> id;
+            if (idPuertoRepetido(id)){
+                throw std::invalid_argument("Ya existe un puerto con ese identificador.");
+            }
             cout << "Ingrese el nombre del puerto";
             cin >> nombre;
-            controlidPuerto(nombre);
             cout << "Ingrese fecha de creación del puerto. Formato: (DD MM AA)";
             cin >> dia >> mes >> anio;
             DtFecha FechaPuerto(dia, mes, anio);
             agregarPuerto(id, nombre, FechaPuerto);
+            }
+            catch (const std::exception &e){
+                std::cerr << e.what() << '\n';
+            }
         }
         break;
         case 2:
