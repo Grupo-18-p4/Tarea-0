@@ -1,6 +1,6 @@
 #ifndef _Logica_
 #define _Logica_
-//FALTA ARRIBO
+#include "Puerto.h"
 #include "BarcoPesquero.h"
 #include "BarcoPasajeros.h"
 #include "DtArribo.h"
@@ -8,13 +8,13 @@
 #include "DtBarcoPasajeros.h"
 #include "DtFecha.h"
 #include "DtPuerto.h"
-//Falta PUERTO
+#include "Puerto.h"
 #include "TipoTamanio.h"
 
 struct array_barcos;
 
 
-void agregarBarco(DtBarco& barco);
+void  agregarBarco(DtBarco& barco);
 
 
 #endif
