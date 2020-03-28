@@ -39,22 +39,46 @@ int main(){
     */
     case 2: //Agregar barco
                 
-                cout << "Ingrese el id del barco";
+                cout << "Ingrese el id del barco: ";
                 cin >> id;
-                cout << "Ingrese el nombre del barco";
+                cout << "Ingrese el nombre del barco: ";
                 cin >> nombre;
-                cout << "De que tipo es el barco a ingresar?";
-                cout << "1)Pesquero";
-                cout << "2)Pasajeros";
+                cout << "De que tipo es el barco a ingresar?" << '\n';
+                cout << "1)Pesquero" << '\n';
+                cout << "2)Pasajeros" << '\n';
+                cout << ">> ";
                 cin >> opc;
                 if(opc == 1){
-                     int capacidad, carga;
-                        cout << "Capacidad: ";
-                        cin >> capacidad;
-                        cout << "Carga: ";
-                        cin >> carga;
-                        DtBarco* barcoPes = new DtBarcoPesquero(nombre,id,capacidad,carga); 
-                        agregarBarco(*barcoPes);
+                    int capacidad, carga;
+                    cout << "Capacidad: ";
+                    cin >> capacidad;
+                    cout << "Carga: ";
+                    cin >> carga;
+                    DtBarco* barcoPes = new DtBarcoPesquero(nombre,id,capacidad,carga); 
+                    agregarBarco(*barcoPes);
+                }
+                else if(opc == 2){
+                    TipoTamanio tam;
+                    int cantPasajeros;
+                    cout << "Que tipo de tamaño: \n1)Bote\n2)Crucero\n3)Galeon\n4)Transatlantico\n";
+                    cout << ">> ";
+                    cin >> opc;
+                    if(opc==1)
+                        tam = bote;
+                    else if(opc==2)
+                        tam = crucero;
+                    else if(opc==3)
+                        tam=galeon;
+                    else if(opc==4)
+                        tam=transatlantico;
+                    else{
+                        cout << "Ingrese opcion correcta";
+                        break;
+                    }
+                    cout << "Carga: ";
+                    cin >> cantPasajeros;
+                    DtBarco* barco = new DtBarcoPasajeros(nombre,id,cantPasajeros,tam);
+                    agregarBarco(*barco);
                 }
                 else{
                     cout << "SOBAME LOS HUEVOS";
