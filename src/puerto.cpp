@@ -25,7 +25,7 @@ Puerto::~Puerto()
 ////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////Getters//////////////////////////////////////////
-string Puerto::GetPuertoId(){return this->nombre}
+string Puerto::GetPuertoId(){return this->id}
 string Puerto::GetPuertoNombre(){return this->nombre}
 DtFecha Puerto::GetPuertoFecha(){return this->DtFecha}
 //Arraydenombres listarPuertos
