@@ -12,11 +12,13 @@ struct Array_barcos
   int tope = -1;
 } aB;
 
-struct Array_puertos
-{
-  DtPuerto *arreglopuerto[MAX_PUERTOS];
+struct Array_puertos{
+  Puerto arr_Puerto[MAX_PUERTOS];
   int tope = -1;
-} aP;
+};
+
+typedef Array_puertos * arr_pt;
+arr_pt aP = new Array_puertos;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool controlIdBarco(string id)
@@ -51,51 +53,34 @@ void agregarBarco(DtBarco &barco)
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void controlidPuerto(string id)
-{
-  bool puertoRepetido = false;
-  if (aP.tope > -1)
-  {
-    int i = 0;
-    while (i <= aP.tope && puertoRepetido == false)
-    {
-      if (aP.arreglopuerto[i]->getid() == id)
-      {
-        throw std::invalid_argument("Ya existe puerto con ese identificador.");
-        puertoRepetido = true;
-      }
+bool idPuertoRepetido(string id){
+  int i = 0;
+  if (aP->tope == -1){
+    i = 0;
+  }
+  else{
+    while ((i<= aP->tope) && (aP->arr_Puerto[i] != id)){
       i++;
     }
   }
-}
-void agregarPuerto(string id, string nombre, const DtFecha &fechaCreacion)
-{
-  //Se hace previamente el control del id
-  DtPuerto port(id, nombre, fechaCreacion, 0);
+  return (i <= aP->tope) /* si i es menor o igual al tope es porque el while se corto con la condicion (aP->arr_Puerto[i] != id) */
+} 
 
-  if (aP.tope < 0)
-  {
-    aP.arreglopuerto[0] = &port;
-    aP.tope++;
+void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
+  //Chequear si el id no esta repetido en la propia función o chequearlo en el principal
+  if (aP->tope == MAX_PUERTOS){
+    cout << "Ya se ha alcanzado la cantidad máxima de puertos. \n";
   }
-  else
-  {
-    if (aP.tope < MAX_PUERTOS)
-    {
-      aP.arreglopuerto[aP.tope] = &port;
-      aP.tope++;
-    }
-    else
-    {
-      cout << "No se pueden insertar mas puertos";
-    }
+  else{
+    Puerto p(id,nombre,fechaCreacion); // o Puerto* p = new Puerto(id,nombre,fechaCreacion);
+    aP->tope++;
+    aP->arr_Puerto[aP->tope] = p;
   }
+    
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
-
-
 Col(DtPuerto) listarPuertos(){}
 void agregarArribo(string idPuerto, string idBarco, float cargaDespacho){}
 Col(DtArribo) obtenerInfoArribosEnPuerto(string idPuerto){}
