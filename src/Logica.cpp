@@ -6,75 +6,92 @@
 const int MAX_PUERTOS = 32;
 const int MAX_BARCOS = 32;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-struct Array_barcos {
-  DtBarco* arregloBarco[MAX_BARCOS];
+struct Array_barcos
+{
+  DtBarco *arregloBarco[MAX_BARCOS];
   int tope = -1;
 } aB;
 
-struct Array_puertos {
-  DtPuerto* arreglopuerto[MAX_PUERTOS];
+struct Array_puertos
+{
+  DtPuerto *arreglopuerto[MAX_PUERTOS];
   int tope = -1;
 } aP;
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void agregarBarco(DtBarco& barco){
-    if(aB.tope < 0){
-        aB.arregloBarco[0] = &barco;
-        aB.tope++;
+bool controlIdBarco(string id)
+{
+  bool barcoRepetido = false;
+  if (aB.tope >= 0)
+  {
+    int i = 0;
+    while (i <= aB.tope && !barcoRepetido)
+    {
+      if (aB.arregloBarco[i]->get_id() == id)
+      {
+        barcoRepetido = true;
+      }
+      i++;
     }
-    else {
-        bool barcoRepetido = false;
-        for(int i = 0; i<=aB.tope; i++){
-          if(aB.arregloBarco[i]->get_id() == barco.get_id()){
-              throw std::invalid_argument("Ya existe barco con ese identificador."); 
-              barcoRepetido = true;
-              delete &barco;  
-              break;
-          }
-        }
-        if(!barcoRepetido){
-            aB.tope++;
-            aB.arregloBarco[aB.tope] = &barco; 
-        }
-
-    }
-
+  }
+  return barcoRepetido;
 }
 
+void agregarBarco(DtBarco &barco)
+{
+  if (aB.tope < MAX_BARCOS)
+  {
+    aB.tope++;
+    aB.arregloBarco[aB.tope] = &barco;
+  }
+  else
+  {
+    cout << "No se pueden agregar mas barcos";
+  }
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void controlidPuerto(string id){
-bool puertoRepetido = false;
-  if (aP.tope >-1){
+void controlidPuerto(string id)
+{
+  bool puertoRepetido = false;
+  if (aP.tope > -1)
+  {
     int i = 0;
-        while (i<=aP.tope && puertoRepetido==false){
-          if(aP.arreglopuerto[i]->getid() == id){
-              throw std::invalid_argument("Ya existe puerto con ese identificador."); 
-              puertoRepetido = true;
-          }
-          i++;
-        }
+    while (i <= aP.tope && puertoRepetido == false)
+    {
+      if (aP.arreglopuerto[i]->getid() == id)
+      {
+        throw std::invalid_argument("Ya existe puerto con ese identificador.");
+        puertoRepetido = true;
+      }
+      i++;
+    }
   }
-} 
-void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
+}
+void agregarPuerto(string id, string nombre, const DtFecha &fechaCreacion)
+{
   //Se hace previamente el control del id
-  DtPuerto port(id,nombre, fechaCreacion, 0); 
-  
-  if(aP.tope < 0){
+  DtPuerto port(id, nombre, fechaCreacion, 0);
+
+  if (aP.tope < 0)
+  {
     aP.arreglopuerto[0] = &port;
     aP.tope++;
-  } 
-  else {
-    if (aP.tope<MAX_PUERTOS){
+  }
+  else
+  {
+    if (aP.tope < MAX_PUERTOS)
+    {
       aP.arreglopuerto[aP.tope] = &port;
-      aP.tope++; 
+      aP.tope++;
     }
-    else {cout << "No se pueden insertar mas puertos";}
+    else
+    {
+      cout << "No se pueden insertar mas puertos";
+    }
   }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 /*
 
