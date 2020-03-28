@@ -11,6 +11,7 @@ int DtBarcoPasajeros::get_cantPasajeros(){
 TipoTamanio DtBarcoPasajeros::get_tamanio(){
     return this->tamanio;
 }
+DtBarcoPesquero::~DtBarcoPesquero(){}//No se que verga hay que hacer
 const ostream& operator<< (ostream& os, DtBarcoPasajeros obj) {
     os << "Id barco: " << obj.get_id() << '\n';
     os << "Nombre: " << obj.get_nombre() << '\n';
