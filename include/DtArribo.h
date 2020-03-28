@@ -9,12 +9,12 @@ class DtArribo {
 	private:
 		DtFecha fecha;
 		float carga;
-		DtBarco* barco;
+		DtBarco barco;
     public: 
-    	DtArribo(DtFecha fecha, float carga, DtBarco *barco);
+    	DtArribo(DtFecha fecha, float carga, DtBarco barco);
     	DtFecha getF();
     	float getC();
-    	DtBarco* getB();
+    	DtBarco getB();
 };
 
 #endif
