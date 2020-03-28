@@ -58,7 +58,12 @@ void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
   if(aP.tope < 0){
         aP.arregloPuerto[0] = &port;
         aP.tope++;
-    }
+    } else {
+    if (aP.tope<MAX_PUERTOS){
+  aP.arregloPuerto[aP.tope] = &port;
+    aP.tope++; }else {cout << "No se pueden insertar mas puertos";}
+  
+  }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
