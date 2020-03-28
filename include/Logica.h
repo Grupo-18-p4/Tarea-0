@@ -15,7 +15,7 @@
 struct array_barcos;
 struct Array_puertos;
 
-bool controlIdBarco(string id);
+bool idPuertoRepetido(string id);
 void  agregarBarco(DtBarco& barco);
 void controlidPuerto(string id);
 void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion);
