@@ -1,7 +1,17 @@
-class Puerto
- {    
+#ifndef _Puerto_
+#define _Puerto_
+
+#include <iostream>
+#include "DtFecha.h"
+using namespace std;
+class Puerto{    
      private:  
-     String id;  //field or data member     
-     String nombre; //field or data member  
-     DtFecha fechaCreacion;//field or data member    
+        string id;  //field or data member     
+        string nombre; //field or data member  
+        DtFecha fechaCreacion;//field or data member
+    public: 
+        Puerto::Puerto();
+        Puerto::Puerto(string id, string nombre, DtFecha fechaCreacion);
+        void Puerto::eliminarPuerto(&puerto port);   
  };
+ #endif
