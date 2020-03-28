@@ -28,7 +28,7 @@
 all: principal
 
 # Objetivos que no son archivos.
-.PHONY: all clean_bin clean_test clean testing entrega uso_memoria
+.PHONY: all clean_bin clean
 
 
 # directorios
@@ -38,7 +38,7 @@ ODIR    = obj
 
 #TESTDIR = test
 
-MODULOS = Arribo Barco BarcoPasajeros BarcoPesquero DtArribos DtBarco DtBarcoPasajeros DtBarcoPesquero DtFecha DtPuerto Logica Puerto TipoTamanio
+MODULOS = Arribo Barco BarcoPasajeros BarcoPesquero DtArribo DtBarco DtBarcoPasajeros DtBarcoPesquero DtFecha DtPuerto Logica Puerto 
 
 # cadena de archivos, con directorio y extensión
 HS   = $(MODULOS:%=$(HDIR)/%.h)
