@@ -1,5 +1,6 @@
 #include <string>
 #include <stdlib.h>
+#include <ctime>
 
 void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){}
 void agregarBarco(DtBarco& barco) {}
