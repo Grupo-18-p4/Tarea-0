@@ -1,5 +1,7 @@
 #include "../include/Puerto.h"
 #include <iostream>
+#include <stddef.h>
+
 
 ////////////////////////////////constructores////////////////////////////////////////
 //Por parámetros
@@ -7,6 +9,10 @@ Puerto :: Puerto(string id, string nombre, DtFecha fecha){
   this->id=id;
   this->nombre=nombre;
   this->fechaCreacion=fecha;
+  for (int i = 0;i<=30;i++){
+  	this->Puer_Arr.arrA[i] = NULL;
+  }
+  this->Puer_Arr.tope = -1;
 }
 
 //Por defecto
@@ -36,3 +42,4 @@ DtFecha Puerto::GetPuertoFecha(){return this->fechaCreacion;}
 //Se crearan segun sea necesario
 
 ///////////////////////////////////////////////////////////////////////////////////
+
