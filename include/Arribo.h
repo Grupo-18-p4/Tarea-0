@@ -7,7 +7,7 @@ using namespace std;
 
 class Arribo {    
      private:  
-     DtFecha id;    
+     DtFecha fecha;    
      float carga;
  
  public:
