@@ -4,30 +4,30 @@
 ////////////////////////////////constructores////////////////////////////////////////
 //Por parámetros
 Puerto :: Puerto(string id, string nombre, DtFecha fecha){
-this->id=id;
-this->nombre=nombre
-this->fechaCreacion=fecha;
+  this->id=id;
+  this->nombre=nombre;
+  this->fechaCreacion=fecha;
 }
 
 //Por defecto
-Puerto::Puerto(){
-//this->id=0;
-//this->nombre=0;
-//this->fechaCreacion=NULL;
-}
+//Puerto::Puerto(){
+// this->id=0;
+// this->nombre=0;
+// this->fechaCreacion=NULL;
+//}
 ////////////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////Destructores///////////////////////////////////////
-Puerto::~Puerto()
-{ delete(port->fechaCreacion);
-  delete(port);}
+Puerto::~Puerto(){ //delete(this->fechaCreacion);
+  delete(this);
+}
 ////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////Getters//////////////////////////////////////////
-string Puerto::GetPuertoId(){return this->id}
-string Puerto::GetPuertoNombre(){return this->nombre}
-DtFecha Puerto::GetPuertoFecha(){return this->DtFecha}
+string Puerto::GetPuertoId(){return this->nombre;}
+string Puerto::GetPuertoNombre(){return this->nombre;}
+DtFecha Puerto::GetPuertoFecha(){return this->fechaCreacion;}
 //Arraydenombres listarPuertos
 ////////////////////////////////////////////////////////////////////////////////////
 
