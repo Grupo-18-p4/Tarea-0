@@ -12,9 +12,11 @@ struct Array_barcos {
 } aB;
 
 struct Array_puertos {
-  Dtpuerto* arreglopuerto[MAX_PUERTOS];
+  DtPuerto* arreglopuerto[MAX_PUERTOS];
   int tope = -1;
 } aP;
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void agregarBarco(DtBarco& barco){
     if(aB.tope < 0){
@@ -23,7 +25,7 @@ void agregarBarco(DtBarco& barco){
     }
     else {
         bool barcoRepetido = false;
-        for(int i = 0; i++; i<=aB.tope){
+        for(int i = 0; i<=aB.tope; i++){
           if(aB.arregloBarco[i]->get_id() == barco.get_id()){
               throw std::invalid_argument("Ya existe barco con ese identificador."); 
               barcoRepetido = true;
@@ -39,37 +41,42 @@ void agregarBarco(DtBarco& barco){
     }
 
 }
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-controlidPuerto(String id){
+void controlidPuerto(string id){
 bool puertoRepetido = false;
   if (aP.tope >-1){
     int i = 0;
         while (i<=aP.tope && puertoRepetido==false){
-          if(aP.arregloPuerto[i]->get_id() == id){
+          if(aP.arreglopuerto[i]->getid() == id){
               throw std::invalid_argument("Ya existe puerto con ese identificador."); 
-              puertoRepetido = true;}
+              puertoRepetido = true;
+          }
           i++;
-}
-    
+        }
+  }
+} 
 void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
   //Se hace previamente el control del id
-  puerto port= new dtpuerto(id,nombre,DtFecha,0); 
+  DtPuerto port(id,nombre, fechaCreacion, 0); 
   
   if(aP.tope < 0){
-        aP.arregloPuerto[0] = &port;
-        aP.tope++;
-    } else {
+    aP.arreglopuerto[0] = &port;
+    aP.tope++;
+  } 
+  else {
     if (aP.tope<MAX_PUERTOS){
-  aP.arregloPuerto[aP.tope] = &port;
-    aP.tope++; }else {cout << "No se pueden insertar mas puertos";}
-  
+      aP.arreglopuerto[aP.tope] = &port;
+      aP.tope++; 
+    }
+    else {cout << "No se pueden insertar mas puertos";}
   }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
+/*
 
 
 Col(DtPuerto) listarPuertos(){}
@@ -77,3 +84,4 @@ void agregarArribo(string idPuerto, string idBarco, float cargaDespacho){}
 Col(DtArribo) obtenerInfoArribosEnPuerto(string idPuerto){}
 void eliminarArribos(string idPuerto, const DtFecha& fecha){}
 Col(DtBarco*)listarBarcos(){}
+*/
