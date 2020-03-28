@@ -11,9 +11,9 @@ this->fechaCreacion=fecha;
 
 //Por defecto
 Puerto::Puerto(){
-this->id=0;
-this->nombre=0;
-this->fechaCreacion=NULL;
+//this->id=0;
+//this->nombre=0;
+//this->fechaCreacion=NULL;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 
