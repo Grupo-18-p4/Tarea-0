@@ -16,7 +16,7 @@ struct Array_puertos;
 
 void  agregarBarco(DtBarco& barco);
 controlidPuerto(String id);
-void agregarPuerto;
+void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion);
 Col(DtPuerto) listarPuertos();
 void agregarArribo(string idPuerto, string idBarco, float cargaDespacho);
 Col(DtArribo) obtenerInfoArribosEnPuerto(string idPuerto);
