@@ -16,6 +16,6 @@ class DtBarcoPasajeros: public DtBarco{
         TipoTamanio get_tamanio();
     
         //Destructor
-        DtBarcoPasajeros::~DtBarcoPasajeros();
+        ~DtBarcoPasajeros();
 };
 #endif
