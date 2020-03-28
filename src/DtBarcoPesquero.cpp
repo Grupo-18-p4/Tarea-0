@@ -23,11 +23,3 @@ const ostream& operator<< (ostream& os, DtBarcoPesquero obj) {
     os << "Carga: " << obj.get_carga() << '\n';
     return os;
 }
-
-//TODO: ver como sacarlo
-int main(){
-    DtBarcoPesquero* barquito = new DtBarcoPesquero("A","B",3,3);
-    cout << *barquito;
-    return 1;
-}
-
