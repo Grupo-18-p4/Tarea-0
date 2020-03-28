@@ -44,7 +44,7 @@ controlidPuerto(String id){
 bool puertoRepetido = false;
   if (aP.tope >-1){
         for(int i = 0; i++; i<=aP.tope){
-          if(aP.arregloPuerto[i]->get_id() == id{
+          if(aP.arregloPuerto[i]->get_id() == id){
               throw std::invalid_argument("Ya existe puerto con ese identificador."); 
               puertoRepetido = true;}
 }
