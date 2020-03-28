@@ -25,7 +25,7 @@ Arribo::~Arribo()
 
 ///////////////////////////////////Getters//////////////////////////////////////////
 DtFecha GetArriboFecha(){return this->fecha}
-string GetArriboCarga(){return this->carga}
+float GetArriboCarga(){return this->carga}
 
 //void agregarArribo(string idPuerto, string idBarco, float cargaDespacho) //modifica atributos del barco
 ////////////////////////////////////////////////////////////////////////////////////
