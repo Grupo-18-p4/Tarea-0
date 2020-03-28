@@ -5,7 +5,7 @@
 
 
 
-DtArribo::DtArribo(DtFecha fecha, float carga, DtBarco* barco){
+DtArribo::DtArribo(DtFecha fecha, float carga, DtBarco barco){
 	this->fecha = fecha;
 	this->carga = carga;
 	this->barco = barco;
@@ -19,7 +19,7 @@ float DtArribo :: getC(){
 	return this->carga;
 }
 
-DtBarco* DtArribo::getB(){
+DtBarco DtArribo::getB(){
 	return this->barco;
 }
 
