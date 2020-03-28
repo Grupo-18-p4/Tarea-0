@@ -43,10 +43,12 @@ void agregarBarco(DtBarco& barco){
 controlidPuerto(String id){
 bool puertoRepetido = false;
   if (aP.tope >-1){
-        for(int i = 0; i++; i<=aP.tope){
+    int i = 0;
+        while (i<=aP.tope && puertoRepetido==false){
           if(aP.arregloPuerto[i]->get_id() == id){
               throw std::invalid_argument("Ya existe puerto con ese identificador."); 
               puertoRepetido = true;}
+          i++;
 }
     
 void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
