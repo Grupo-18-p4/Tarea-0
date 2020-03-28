@@ -1,4 +1,4 @@
-#include ".../include/Arribo.h"
+#include "../include/Arribo.h"
 #include <iostream>
 
 ////////////////////////////////constructores////////////////////////////////////////
