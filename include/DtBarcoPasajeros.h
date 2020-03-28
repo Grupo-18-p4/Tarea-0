@@ -9,11 +9,13 @@ class DtBarcoPasajeros: public DtBarco{
     public:
         
         //Constructores
-        //DtBarcoPasajeros(); //No se si es necesario agregar este
         DtBarcoPasajeros(string nombre, string id, int cantPasajeros, TipoTamanio tamanio);
         
         //Getters
         int get_cantPasajeros();
         TipoTamanio get_tamanio();
+    
+        //Destructor
+        DtBarcoPasajeros::~DtBarcoPasajeros();
 };
 #endif
