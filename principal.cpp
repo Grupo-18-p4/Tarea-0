@@ -24,10 +24,9 @@ int main(){
     case 1: //Agregar puerto
                 cout << "Ingrese el id del puerto";
                     cin >> id;
-                
+                //if (ya existe el id){ std::invalid_argument}
                 cout << "Ingrese el nombre del puerto";
                     cin >> nombre;
-                controlidPuerto(nombre);
                 cout << "Ingrese fecha de creación del puerto. Formato: (DD MM AA)";
                 cin >> dia >> mes >> anio;
                 DtFecha *FechaPuerto = new DtFecha(dia,mes,anio);
