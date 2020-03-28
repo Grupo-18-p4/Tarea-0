@@ -9,8 +9,9 @@ class DtBarco{
     public:
         string get_id();
         string get_nombre();
-    protected: 
+        DtBarco();
         DtBarco(string nombre, string id);
+        
 };
 
 #endif
