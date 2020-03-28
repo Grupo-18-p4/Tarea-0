@@ -11,10 +11,10 @@ class Arribo {
      float carga;
  
  public:
-    DtFecha GetArriboFecha(Arribo arrival);
-    string GetArriboCarga(Arribo arrival);
-    Arribo::~Arribo();
-    Arribo::Arribo();
-    Arribo :: Arribo(DtFecha fecha,float carga);
+    DtFecha GetArriboFecha();
+    float GetArriboCarga();
+    ~Arribo();
+    Arribo();
+    Arribo(DtFecha fecha,float carga);
  };
  #endif

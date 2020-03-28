@@ -11,11 +11,11 @@ class Puerto{
         DtFecha fechaCreacion;//field or data member
      
     public: 
-        Puerto::Puerto();
-        Puerto::Puerto(string id, string nombre, DtFecha fechaCreacion);
-        Puerto::~Puerto();
-        string Puerto::GetPuertoId();
-        string Puerto::GetPuertoNombre();
-        DtFecha Puerto::GetPuertoFecha();
+        Puerto();
+        Puerto(string id, string nombre, DtFecha fechaCreacion);
+        ~Puerto();
+        string GetPuertoId();
+        string GetPuertoNombre();
+        DtFecha GetPuertoFecha();
  };
  #endif
