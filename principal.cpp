@@ -1,7 +1,6 @@
 
 #include "include/Logica.h"
 #include <iostream>
-
 /////////////////////////Variables////////////////////////////////
 string id, nombre, idb, idp;
 int dia, mes, anio;
@@ -56,7 +55,7 @@ int main()
             }
         }
         break;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 2:
             cout << "Ingrese el id del barco: ";
             cin >> id;
@@ -117,18 +116,19 @@ int main()
                 std::cerr << e.what() << '\n';
             }
             break;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        case 3: arr_pt ListaPuertos = listarPuertos();
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case 3:
+            //arr_pt ListaPuertos = listarPuertos();
             break;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 4: //Agregar arribo
             try
             {
                 cout << "Ingrese el id del barco: ";
                 cin >> idb;
-                
+
                 if (!controlIdBarco(idb))
-                        throw std::invalid_argument("\n No existe barco con ese identificador.");
+                    throw std::invalid_argument("\n No existe barco con ese identificador.");
                 else
                 {
                     try
@@ -143,38 +143,44 @@ int main()
                             cout << "\n Ingrese la carga de despacho: ";
                             cin >> cargaDespacho;
 
-                            agregarArribo(idp,idb,cargaDespacho);
+                            agregarArribo(idp, idb, cargaDespacho);
                         }
                     }
-                    catch(const std::exception &e)
+                    catch (const std::exception &e)
                     {
-                    std::cerr << e.what() << '\n';
+                        std::cerr << e.what() << '\n';
                     }
                 }
             }
-            catch(const std::exception &e)
+            catch (const std::exception &e)
             {
-                    std::cerr << e.what() << '\n';
+                std::cerr << e.what() << '\n';
             }
-                
+
             break;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        case 5: //Obtener arribos en puerto  
-                try
-                    {   cout << "\n Ingrese el id del puerto: ";
-                        cin >> idp;
-                        if (!idPuertoRepetido(idp))
-                            throw std::invalid_argument("\n No existe un puerto con ese identificador.");
-                        else { arr_arribos arribosdePuerto = obtenerInfoArribosEnPuerto(idp);}
-                    }
-                    catch(const std::exception &e)
-                    {
-                    std::cerr << e.what() << '\n';
-                    }
-            break;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case 5: //Obtener arribos en puerto
+        {
+            try
+            {
+                cout << "\n Ingrese el id del puerto: ";
+                cin >> idp;
+                if (!idPuertoRepetido(idp))
+                    throw std::invalid_argument("\n No existe un puerto con ese identificador.");
+                else
+                {
+                    arr_Arribos arribosdePuerto = obtenerInfoArribosEnPuerto(idp);
+                }
+            }
+            catch (const std::exception &e)
+            {
+                std::cerr << e.what() << '\n';
+            }
+        }
+        break;
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 6: //Eliminar arribos
-                try
+            /* try
                     {   cout << "\n Ingrese el id del puerto: ";
                         cin >> idp;
                         if (!idPuertoRepetido(idp))
@@ -194,16 +200,20 @@ int main()
                     catch(const std::exception &e)
                     {
                     std::cerr << e.what() << '\n';
-                    }
+                    }*/
             break;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        case 7: Col_Barcos Barcos = listarBarcos();
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case 7:
+        {
+            Col_barcos Barcos = listarBarcos();
+        }
+            
             break;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 0: //Salir
             cout << "Saliendo... \n";
             break;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         default:
             cout << "Opción no válida, volviendo...\n";
             break;
