@@ -8,9 +8,14 @@ const int MAX_BARCOS = 32;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 struct Array_barcos
 {
-  DtBarco *arregloBarco[MAX_BARCOS];
+  Barco *arregloBarco[MAX_BARCOS];
   int tope = -1;
 } aB;
+
+struct Col_barcos{
+  DtBarco *colBarco[MAX_BARCOS];
+  int tope = -1;
+} cB;
 
 struct Array_puertos{
   Puerto* arr_Puerto[MAX_PUERTOS];
@@ -41,10 +46,32 @@ bool controlIdBarco(string id)
 
 void agregarBarco(DtBarco &barco)
 {
+  DtBarcoPesquero* barcoObj  = dynamic_cast<DtBarcoPesquero*>(&barco);
+  Barco* aAgregar;
+  if(barcoObj == NULL){
+    DtBarcoPasajeros* barcoPas = dynamic_cast<DtBarcoPasajeros*>(&barco);
+    aAgregar = new BarcoPasajeros(barcoPas->get_nombre(),barcoPas->get_id(),barcoPas->get_cantPasajeros(),barcoPas->get_tamanio());
+  }
+  else{
+    aAgregar = new BarcoPesquero(barcoObj->get_nombre(),barcoObj->get_id(),barcoObj->get_capacidad(),barcoObj->get_carga());
+  }
+  
+
   if (aB.tope < MAX_BARCOS)
   {
     aB.tope++;
-    aB.arregloBarco[aB.tope] = &barco;
+    aB.arregloBarco[cB.tope] = aAgregar;
+  }
+  else
+  {
+    cout << "No se pueden agregar mas barcos";
+  }
+
+  
+  if (cB.tope < MAX_BARCOS)
+  {
+    cB.tope++;
+    cB.colBarco[cB.tope] = &barco;
   }
   else
   {
@@ -68,18 +95,59 @@ bool idPuertoRepetido(string id){
 
 void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
   //Chequear si el id no esta repetido en la propia función o chequearlo en el principal
-  if (aP->tope == MAX_PUERTOS - 1){
+   if (aP->tope == MAX_PUERTOS - 1){
+
     cout << "Ya se ha alcanzado la cantidad máxima de puertos. \n";
   }
   else{
-    //Puerto p(id,nombre,fechaCreacion); 
+    //Puerto p(id,nombre,fechaCreacion);
     Puerto* p = new Puerto(id,nombre,fechaCreacion);
     aP->tope++;
     aP->arr_Puerto[aP->tope] = p;
   }
-    
+
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// void agregarArribo(string idPuerto, string idBarco, float cargaDespacho){
+ 
+//   time_t t = time(NULL);
+// 	tm* timePtr = localtime(&t);
+//   DtFecha FechaActual(timePtr->tm_mday,timePtr->tm_mon,timePtr->tm_year);
+  
+//   Arribo* a = new Arribo(FechaActual,cargaDespacho);
+//   Barco Barquito;
+//   Barquito->arribar(cargaDespacho);
+  
+  
+//   int i = 0;
+//   while (i <= aB.tope)
+//     {
+//       if (aB.arregloBarco[i]->get_id() == idBarco)
+//       {
+//         Barquito = aB.arregloBarco[i];
+//         i = aP.tope;
+//       }
+//       i++;
+//     }
+//   DtArribo dta(FechaActual,cargaDespacho,*Barquito);
+  
+//   Puerto* P;
+//   while (i <= aP.tope)
+//     {
+//       if (aP.arr_Puerto[i]->get_id() == idPuerto)
+//       {
+//         P = aP.arr_Puerto[i];
+//         i = aP.tope;
+//       }
+//       i++;
+//     }
+  
+//   P->arr_Arribos.arrA[P->arr_Arribos->indice_tope] = Arribo;
+//   P->arr_Arribos->indice_tope++;
+
+// }
+
 
 /*
 Col(DtPuerto) listarPuertos(){}
@@ -88,4 +156,3 @@ Col(DtArribo) obtenerInfoArribosEnPuerto(string idPuerto){}
 void eliminarArribos(string idPuerto, const DtFecha& fecha){}
 Col(DtBarco*)listarBarcos(){}
 */
-
