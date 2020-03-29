@@ -116,10 +116,10 @@ int main()
                 std::cerr << e.what() << '\n';
             }
             break;
-
-        case 3: //Listar puertos
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case 3: arr_pt ListaPuertos = listarPuertos();
             break;
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 4: //Agregar arribo
             try
             {
@@ -157,20 +157,52 @@ int main()
             }
                 
             break;
-
-        case 5: //Obtener arribos en puerto
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case 5: //Obtener arribos en puerto  
+                try
+                    {   cout << "\n Ingrese el id del puerto: ";
+                        cin >> idp;
+                        if (!idPuertoRepetido(idp))
+                            throw std::invalid_argument("\n No existe un puerto con ese identificador.");
+                        else { arr_arribos arribosdePuerto = obtenerInfoArribosEnPuerto(idp);}
+                    }
+                    catch(const std::exception &e)
+                    {
+                    std::cerr << e.what() << '\n';
+                    }
             break;
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 6: //Eliminar arribos
+                try
+                    {   cout << "\n Ingrese el id del puerto: ";
+                        cin >> idp;
+                        if (!idPuertoRepetido(idp))
+                            throw std::invalid_argument("\n No existe un puerto con ese identificador.");
+                        else {  
+                cout << "Ingrese fecha de los arribos. \n";
+                cout << "Dia: ";
+                cin >> dia;
+                cout << "Mes: ";
+                cin >> mes;
+                cout << "Año: ";
+                cin >> anio;
+                DtFecha FechaArribos(dia, mes, anio);}
+                  eliminarArribos(idp,FechaArribos);
+                   delete(FechaArribos);
+                    }
+                    catch(const std::exception &e)
+                    {
+                    std::cerr << e.what() << '\n';
+                    }
             break;
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 7: //Listar barcos
             break;
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 0: //Salir
             cout << "Saliendo... \n";
             break;
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         default:
             cout << "Opción no válida, volviendo...\n";
             break;
