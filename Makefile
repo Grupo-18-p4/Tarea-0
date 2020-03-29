@@ -51,7 +51,7 @@ EJECUTABLE=principal
 # compilador
 CC = g++
 # opciones de compilación
-CCFLAGS = -Wall -Werror -I$(HDIR) -g -DNDEBUG
+CCFLAGS = -Wall  -I$(HDIR) -g -DNDEBUG -std=c++11
 # -DNDEBUG
 # se agrega esta opción para que las llamadas a assert no hagan nada.
 
