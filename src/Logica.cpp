@@ -109,44 +109,57 @@ void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// void agregarArribo(string idPuerto, string idBarco, float cargaDespacho){
+void agregarArribo(string idPuerto, string idBarco, float cargaDespacho){
  
-//   time_t t = time(NULL);
-// 	tm* timePtr = localtime(&t);
-//   DtFecha FechaActual(timePtr->tm_mday,timePtr->tm_mon,timePtr->tm_year);
+  time_t t = time(NULL);
+	tm* timePtr = localtime(&t);
+  DtFecha FechaActual(timePtr->tm_mday,timePtr->tm_mon,timePtr->tm_year);
   
-//   Arribo* a = new Arribo(FechaActual,cargaDespacho);
-//   Barco Barquito;
-//   Barquito->arribar(cargaDespacho);
+  Arribo* a = new Arribo(FechaActual,cargaDespacho);
+ 
+  DtBarco Barquito1;
   
+  int i = 0;
+  while (i <= cB.tope)
+    {
+      if (cB.colBarco[i]->get_id() == idBarco)
+      {
+        Barquito1 = *cB.colBarco[i];
+        i = cB.tope;
+      }
+      i++;
+    }
   
-//   int i = 0;
-//   while (i <= aB.tope)
-//     {
-//       if (aB.arregloBarco[i]->get_id() == idBarco)
-//       {
-//         Barquito = aB.arregloBarco[i];
-//         i = aP.tope;
-//       }
-//       i++;
-//     }
-//   DtArribo dta(FechaActual,cargaDespacho,*Barquito);
+  DtArribo dta(FechaActual,cargaDespacho,Barquito1);
+  i = 0;
+  Barco  *Barquito2;
+  while (i <= aB.tope)
+    {
+      if (aB.arregloBarco[i]->getid() == idBarco)
+      {
+        Barquito2 = aB.arregloBarco[i];
+        i = aB.tope;
+      }
+      i++;
+    }
+  Barquito2->arribar(cargaDespacho);//ESPERAR A QUE EL TANCRE IMPLEMENTE EL COSO
+  i = 0;
+  Puerto* P;
+  while (i <= aP->tope)
+    {
+      if (aP->arr_Puerto[i]->GetPuertoId() == idPuerto)
+      {
+        P = aP->arr_Puerto[i];
+        i = aP->tope;
+      }
+      i++;
+    }
   
-//   Puerto* P;
-//   while (i <= aP.tope)
-//     {
-//       if (aP.arr_Puerto[i]->get_id() == idPuerto)
-//       {
-//         P = aP.arr_Puerto[i];
-//         i = aP.tope;
-//       }
-//       i++;
-//     }
+  P->Puer_Arr.arrA[P->Puer_Arr.tope + 1] = a;
+  P->Puer_Arr.tope++;
   
-//   P->arr_Arribos.arrA[P->arr_Arribos->indice_tope] = Arribo;
-//   P->arr_Arribos->indice_tope++;
 
-// }
+}
 
 
 /*
