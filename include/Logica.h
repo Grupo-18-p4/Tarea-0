@@ -14,15 +14,18 @@
 
 struct array_barcos;
 struct Array_puertos;
+struct Col_barcos{
+  DtBarco *colBarco[32];
+  int tope = -1;
+}; 
 bool controlIdBarco(string id);
 bool idPuertoRepetido(string id);
 void  agregarBarco(DtBarco& barco);
 void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion);
 //void Col(DtPuerto) listarPuertos();
 void agregarArribo(string idPuerto, string idBarco, float cargaDespacho);
-//void Col(DtArribo) obtenerInfoArribosEnPuerto(string idPuerto);
 void eliminarArribos(string idPuerto, const DtFecha& fecha);
-//void Col(DtBarco*)listarBarcos();
-
+Col_barcos listarBarcos();
+arr_Arribos obtenerInfoArribosEnPuerto(string idPuerto);
 #endif
 
