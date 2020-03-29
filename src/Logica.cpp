@@ -68,7 +68,7 @@ bool idPuertoRepetido(string id){
 
 void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
   //Chequear si el id no esta repetido en la propia función o chequearlo en el principal
-  if (aP->tope == MAX_PUERTOS){
+  if (aP->tope == MAX_PUERTOS - 1){
     cout << "Ya se ha alcanzado la cantidad máxima de puertos. \n";
   }
   else{
