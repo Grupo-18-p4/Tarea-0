@@ -50,11 +50,11 @@ void agregarBarco(DtBarco &barco)
   if (barcoObj == NULL)
   {
     DtBarcoPasajeros *barcoPas = dynamic_cast<DtBarcoPasajeros *>(&barco);
-    aAgregar = new BarcoPasajeros(barcoPas->get_nombre(), barcoPas->get_id(), barcoPas->get_cantPasajeros(), barcoPas->get_tamanio());
+    aAgregar = new BarcoPasajeros(barcoPas->get_id(), barcoPas->get_nombre(), barcoPas->get_cantPasajeros(), barcoPas->get_tamanio());
   }
   else
   {
-    aAgregar = new BarcoPesquero(barcoObj->get_nombre(), barcoObj->get_id(), barcoObj->get_capacidad(), barcoObj->get_carga());
+    aAgregar = new BarcoPesquero(barcoObj->get_id(), barcoObj->get_nombre(), barcoObj->get_capacidad(), barcoObj->get_carga());
   }
 
   if (aB.tope < MAX_BARCOS)
