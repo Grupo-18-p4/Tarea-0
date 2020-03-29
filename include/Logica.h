@@ -11,7 +11,8 @@
 #include "DtPuerto.h"
 #include "Puerto.h"
 #include "TipoTamanio.h"
-
+#define MAX_PUERTOS 32
+#define MAX_BARCOS  32
 struct array_barcos;
 struct Array_puertos;
 struct Col_barcos{
@@ -32,5 +33,6 @@ void agregarArribo(string idPuerto, string idBarco, float cargaDespacho);
 void eliminarArribos(string idPuerto, const DtFecha& fecha);
 Col_barcos listarBarcos();
 arr_Arribos obtenerInfoArribosEnPuerto(string idPuerto);
+col_dtPuerto listarPuertos();
 #endif
 
