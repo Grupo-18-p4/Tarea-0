@@ -13,7 +13,7 @@ struct Array_barcos
 } aB;
 
 struct Array_puertos{
-  Puerto arr_Puerto[MAX_PUERTOS];
+  Puerto* arr_Puerto[MAX_PUERTOS];
   int tope = -1;
 };
 
@@ -59,11 +59,11 @@ bool idPuertoRepetido(string id){
     i = 0;
   }
   else{
-    while ((i<= aP->tope) && (aP->arr_Puerto[i] != id)){
+    while ((i<= aP->tope) && (aP->arr_Puerto[i]->GetPuertoId() != id)){
       i++;
     }
   }
-  return (i <= aP->tope) /* si i es menor o igual al tope es porque el while se corto con la condicion (aP->arr_Puerto[i] != id) */
+  return (i <= aP->tope); /* si i es menor o igual al tope es porque el while se corto con la condicion (aP->arr_Puerto[i] != id) */
 } 
 
 void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
@@ -72,7 +72,8 @@ void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
     cout << "Ya se ha alcanzado la cantidad máxima de puertos. \n";
   }
   else{
-    Puerto p(id,nombre,fechaCreacion); // o Puerto* p = new Puerto(id,nombre,fechaCreacion);
+    //Puerto p(id,nombre,fechaCreacion); 
+    Puerto* p = new Puerto(id,nombre,fechaCreacion);
     aP->tope++;
     aP->arr_Puerto[aP->tope] = p;
   }
@@ -87,3 +88,4 @@ Col(DtArribo) obtenerInfoArribosEnPuerto(string idPuerto){}
 void eliminarArribos(string idPuerto, const DtFecha& fecha){}
 Col(DtBarco*)listarBarcos(){}
 */
+
