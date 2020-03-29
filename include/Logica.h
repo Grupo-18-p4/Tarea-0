@@ -18,6 +18,7 @@ struct Col_barcos{
   DtBarco *colBarco[32];
   int tope = -1;
 }; 
+struct col_dtPuerto;
 bool controlIdBarco(string id);
 bool idPuertoRepetido(string id);
 void  agregarBarco(DtBarco& barco);
