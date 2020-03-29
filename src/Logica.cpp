@@ -29,12 +29,12 @@ arr_pt aP = new Array_puertos;
 bool controlIdBarco(string id)
 {
   bool barcoRepetido = false;
-  if (aB.tope >= 0)
+  if (cB.tope >= 0)
   {
     int i = 0;
-    while (i <= aB.tope && !barcoRepetido)
+    while (i <= cB.tope && !barcoRepetido)
     {
-      if (aB.arregloBarco[i]->get_id() == id)
+      if (cB.colBarco[i]->get_id() == id)
       {
         barcoRepetido = true;
       }
@@ -95,8 +95,8 @@ bool idPuertoRepetido(string id){
 
 void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
   //Chequear si el id no esta repetido en la propia función o chequearlo en el principal
-   if (aP->tope == MAX_PUERTOS - 1){
-
+  if (aP->tope == MAX_PUERTOS - 1){
+    
     cout << "Ya se ha alcanzado la cantidad máxima de puertos. \n";
   }
   else{
