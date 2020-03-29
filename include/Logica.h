@@ -14,7 +14,7 @@
 
 struct array_barcos;
 struct Array_puertos;
-
+bool controlIdBarco(string id);
 bool idPuertoRepetido(string id);
 void  agregarBarco(DtBarco& barco);
 void controlidPuerto(string id);
@@ -26,3 +26,4 @@ void eliminarArribos(string idPuerto, const DtFecha& fecha);
 //void Col(DtBarco*)listarBarcos();
 
 #endif
+
