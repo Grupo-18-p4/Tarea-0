@@ -131,7 +131,8 @@ void agregarArribo(string idPuerto, string idBarco, float cargaDespacho){
       }
     // try
     // {  
-      //if(Barquito2->) METER O LO DEL TANCRE DYNAMIC_CAST O METER TRY CATCH EN LA FUNCION ARRIBA?? NO SE SI ESTARIA BIEN, PORQUE CAPAZ QUE SIGUE CORRIENDO EL CODIGO QUE ESTA ABAJO DE DONDE LLAMO ARRIBAR
+      //if(Barquito2->) METER O LO DEL TANCRE DYNAMIC_CAST O METER TRY CATCH EN LA FUNCION ARRIBA?? NO SE SI ESTARIA BIEN, 
+      //PORQUE CAPAZ QUE SIGUE CORRIENDO EL CODIGO QUE ESTA ABAJO DE DONDE LLAMO ARRIBAR
         Barquito2->arribar(cargaDespacho);
         Arribo* a = new Arribo(FechaActual,cargaDespacho,Barquito2);
         
@@ -199,7 +200,7 @@ void eliminarArribos(string idPuerto, const DtFecha& fecha){
   
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Col(DtBarco*)listarBarcos(){}
+Col_Barcos listarBarcos(){return cB;}
 
 
 
