@@ -31,7 +31,7 @@ Puerto::~Puerto(){ //delete(this->fechaCreacion);
 ////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////Getters//////////////////////////////////////////
-string Puerto::GetPuertoId(){return this->nombre;}
+string Puerto::GetPuertoId(){return this->id;}
 string Puerto::GetPuertoNombre(){return this->nombre;}
 DtFecha Puerto::GetPuertoFecha(){return this->fechaCreacion;}
 //Arraydenombres listarPuertos
