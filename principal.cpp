@@ -180,7 +180,7 @@ int main()
         break;
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 6: //Eliminar arribos
-            /* try
+                { try
                     {   cout << "\n Ingrese el id del puerto: ";
                         cin >> idp;
                         if (!idPuertoRepetido(idp))
@@ -193,14 +193,16 @@ int main()
                 cin >> mes;
                 cout << "Año: ";
                 cin >> anio;
-                DtFecha FechaArribos(dia, mes, anio);}
-                  eliminarArribos(idp,FechaArribos);
-                   delete(FechaArribos);
+                DtFecha FechaArribos(dia, mes, anio);
+                eliminarArribos(idp,FechaArribos);
+                  // delete(FechaArribos);
+                }
+                  
                     }
                     catch(const std::exception &e)
                     {
                     std::cerr << e.what() << '\n';
-                    }*/
+                    }}
             break;
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 7:
