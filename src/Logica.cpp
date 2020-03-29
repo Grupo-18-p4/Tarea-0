@@ -222,16 +222,17 @@ arr_Arribos obtenerInfoArribosEnPuerto(string idPuerto)
   return PuertoSeleccionado->Puer_Arr; //Puerr_Arr está declarado como public
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*void eliminarArribos(string idPuerto, const DtFecha& fecha){
-  Puer_Arr ArribosDelPuerto = obtenerInfoArribosEnPuerto(idPuerto);
+void eliminarArribos(string idPuerto, const DtFecha& fecha){
+  arr_Arribos ArribosDelPuerto = obtenerInfoArribosEnPuerto(idPuerto);
   //Recorrer los arribos e ir borrando  aquellos cuya fecha sean iguales a fecha
-  for(i=0,i++,i<=Puer_Arr.tope){
-  if(GetArriboFecha(Puer_Arr->arrA[i])==fecha){
+  for(int i=0;i++;i<=ArribosDelPuerto.tope){
+  /*
+  if(ArribosDelPuerto.arrA[i]->GetArriboFecha()==fecha){
   //Eliminar el arribo, traer los elementos para abajo, restar uno al tope
-  }
+  }*/
   }
   
-}*/
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Col_barcos listarBarcos()
 {
