@@ -24,15 +24,15 @@ typedef Array_puertos *arr_pt;
 arr_pt aP = new Array_puertos;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool controlIdBarco(string id)
-{
-  bool barcoRepetido = false;
-  if (cB.tope >= 0)
+bool controlIdBarco(string id){
+    bool barcoRepetido = false;
+  if (aB.tope >= 0)
   {
     int i = 0;
-    while (i <= cB.tope && !barcoRepetido)
+    while (i <= aB.tope && !barcoRepetido)
     {
-      if (cB.colBarco[i]->get_id() == id)
+      cout << "I: " << i << "ID: " << aB.arregloBarco[i]->getid() << "\n";
+      if (aB.arregloBarco[i]->getid() == id)
       {
         barcoRepetido = true;
       }
