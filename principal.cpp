@@ -121,26 +121,41 @@ int main()
             break;
 
         case 4: //Agregar arribo
-            cout << "Ingrese el id del barco: ";
-            cin >> idb;
-            
-            if (!controlIdBarco(idb))
-                    throw std::invalid_argument("\n No existe barco con ese identificador.");
-            else
-            { 
-                cout << "\n Ingrese el id del puerto: ";
-                cin >> idp;
-
-                if (!idPuertoRepetido(idp))
-                    throw std::invalid_argument("\n No existe un puerto con ese identificador.");
+            try
+            {
+                cout << "Ingrese el id del barco: ";
+                cin >> idb;
+                
+                if (!controlIdBarco(idb))
+                        throw std::invalid_argument("\n No existe barco con ese identificador.");
                 else
                 {
-                    cout << "\n Ingrese la carga de despacho: ";
-                    cin >> cargaDespacho;
+                    try
+                    {
+                        cout << "\n Ingrese el id del puerto: ";
+                        cin >> idp;
 
-                    agregarArribo(idp,idb,cargaDespacho);
+                        if (!idPuertoRepetido(idp))
+                            throw std::invalid_argument("\n No existe un puerto con ese identificador.");
+                        else
+                        {
+                            cout << "\n Ingrese la carga de despacho: ";
+                            cin >> cargaDespacho;
+
+                            agregarArribo(idp,idb,cargaDespacho);
+                        }
+                    }
+                    catch(const std::exception &e)
+                    {
+                    std::cerr << e.what() << '\n';
+                    }
                 }
             }
+            catch(const std::exception &e)
+            {
+                    std::cerr << e.what() << '\n';
+            }
+                
             break;
 
         case 5: //Obtener arribos en puerto
