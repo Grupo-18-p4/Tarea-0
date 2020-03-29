@@ -20,11 +20,6 @@ struct Array_puertos
   int tope = -1;
 };
 
-struct col_dtPuerto{
-  DtPuerto col_dtP[MAX_PUERTOS];
-  int tope = -1;
-};
-
 typedef Array_puertos *arr_pt;
 arr_pt aP = new Array_puertos;
 
