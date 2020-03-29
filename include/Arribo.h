@@ -10,12 +10,13 @@ class Arribo {
  private:  
      DtFecha fecha;    
      float carga;
+     Barco * barco;
  public:
-     Barco * barco;  //ni idea si va en public o en private la asociacion
+    
     DtFecha GetArriboFecha();
     float GetArriboCarga();
     ~Arribo();
     Arribo();
-    Arribo(DtFecha fecha,float carga);
+    Arribo(DtFecha fecha,float carga,Barco* barco);
  };
  #endif
