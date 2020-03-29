@@ -80,6 +80,8 @@ void agregarBarco(DtBarco &barco)
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+arr_pt listarPuertos(){return aP;}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool idPuertoRepetido(string id){
   int i = 0;
   if (aP->tope == -1){
@@ -168,12 +170,40 @@ void agregarArribo(string idPuerto, string idBarco, float cargaDespacho){
   //   std::cerr << e.what() << '\n';
   // }
 }
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-Col(DtPuerto) listarPuertos(){}
-void agregarArribo(string idPuerto, string idBarco, float cargaDespacho){}
-Col(DtArribo) obtenerInfoArribosEnPuerto(string idPuerto){}
-void eliminarArribos(string idPuerto, const DtFecha& fecha){}
-Col(DtBarco*)listarBarcos(){}
-*/
+struct arr_Arribos{
+ Arribo* arrA[30];
+ int tope;
+};*/
+ arr_Arribos obtenerInfoArribosEnPuerto(string idPuerto){
+   boolean puertoEncontrado=false;
+   //Recorrer array de puertos hasta encontrar el id que quiero
+   while(i<=ap.tope && puertoEncontrado == false){
+   if (getpuertoid(aP->arr_Puerto[i])==idpuerto){
+     Puerto PuertoSeleccionado=aP->arr_Puerto[i];
+   puertoEncontrado=True;
+   }
+   } 
+   return PuertoSeleccionado->Puer_Arr //Puerr_Arr está declarado como public
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void eliminarArribos(string idPuerto, const DtFecha& fecha){
+  Puer_Arr ArribosDelPuerto = obtenerInfoArribosEnPuerto(idPuerto);
+  //Recorrer los arribos e ir borrando  aquellos cuya fecha sean iguales a fecha
+  for(i=0,i++,i<=Puer_Arr.tope){
+  if(GetArriboFecha(Puer_Arr->arrA[i])==fecha){
+  //Eliminar el arribo, traer los elementos para abajo, restar uno al tope
+  }
+  }
+  
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Col(DtBarco*)listarBarcos(){}
+
+
+
+
+
+
+
