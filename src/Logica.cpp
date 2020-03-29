@@ -65,7 +65,7 @@ void agregarBarco(DtBarco &barco)
   if (aB.tope < MAX_BARCOS)
   {
     aB.tope++;
-    aB.arregloBarco[cB.tope] = aAgregar;
+    aB.arregloBarco[aB.tope] = aAgregar;
   }
   else
   {
