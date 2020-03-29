@@ -196,6 +196,7 @@ arr_Arribos obtenerInfoArribosEnPuerto(string idPuerto)
       PuertoSeleccionado = aP->arr_Puerto[i];
       puertoEncontrado = true;
     }
+  i++;
   }
   return PuertoSeleccionado->Puer_Arr; //Puerr_Arr está declarado como public
 }
