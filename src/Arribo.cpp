@@ -1,11 +1,13 @@
 #include "../include/Arribo.h"
 #include <iostream>
+#include <stdef.h>
 
 ////////////////////////////////constructores////////////////////////////////////////
 //Por parámetros
 Arribo :: Arribo(DtFecha fecha,float carga){
 this->fecha=fecha;
 this->carga=carga;
+this->barco = NULL;
 }
 
 //Por defecto
