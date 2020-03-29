@@ -218,7 +218,7 @@ arr_Arribos obtenerInfoArribosEnPuerto(string idPuerto)
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void eliminarArribos(string idPuerto, const DtFecha& fecha)
+void eliminarArribos(string idPuerto, const DtFecha& fecha){}
 /*{
     arr_Arribos ArribosDelPuerto = obtenerInfoArribosEnPuerto(idPuerto);
     for(int i=0;i++;i<=ArribosDelPuerto.tope)
