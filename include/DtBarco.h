@@ -7,11 +7,11 @@ class DtBarco{
         string nombre;
         string id;
     public:
-        string get_id();
+        virtual string get_id();
         string get_nombre();
         DtBarco();
         DtBarco(string nombre, string id);
-        
+       
 };
 
 #endif
