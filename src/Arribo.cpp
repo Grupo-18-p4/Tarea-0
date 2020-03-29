@@ -4,10 +4,10 @@
 
 ////////////////////////////////constructores////////////////////////////////////////
 //Por parámetros
-Arribo :: Arribo(DtFecha fecha,float carga){
+Arribo :: Arribo(DtFecha fecha,float carga, Barco *barco ){
 this->fecha=fecha;
 this->carga=carga;
-this->barco = NULL;
+this->barco = barco;
 }
 
 //Por defecto

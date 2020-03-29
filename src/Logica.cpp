@@ -110,55 +110,63 @@ void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void agregarArribo(string idPuerto, string idBarco, float cargaDespacho){
- 
-  time_t t = time(NULL);
-	tm* timePtr = localtime(&t);
-  DtFecha FechaActual(timePtr->tm_mday,timePtr->tm_mon,timePtr->tm_year);
   
-  Arribo* a = new Arribo(FechaActual,cargaDespacho);
- 
-  DtBarco Barquito1;
-  
-  int i = 0;
-  while (i <= cB.tope)
-    {
-      if (cB.colBarco[i]->get_id() == idBarco)
-      {
-        Barquito1 = *cB.colBarco[i];
-        i = cB.tope;
-      }
-      i++;
-    }
-  
-  DtArribo dta(FechaActual,cargaDespacho,Barquito1);
-  i = 0;
-  Barco  *Barquito2;
-  while (i <= aB.tope)
-    {
-      if (aB.arregloBarco[i]->getid() == idBarco)
-      {
-        Barquito2 = aB.arregloBarco[i];
-        i = aB.tope;
-      }
-      i++;
-    }
-  Barquito2->arribar(cargaDespacho);//ESPERAR A QUE EL TANCRE IMPLEMENTE EL COSO
-  i = 0;
-  Puerto* P;
-  while (i <= aP->tope)
-    {
-      if (aP->arr_Puerto[i]->GetPuertoId() == idPuerto)
-      {
-        P = aP->arr_Puerto[i];
-        i = aP->tope;
-      }
-      i++;
-    }
-  
-  P->Puer_Arr.arrA[P->Puer_Arr.tope + 1] = a;
-  P->Puer_Arr.tope++;
-  
+    time_t t = time(NULL);
+    tm* timePtr = localtime(&t);
+    DtFecha FechaActual(timePtr->tm_mday,timePtr->tm_mon,timePtr->tm_year);
 
+    
+    int i = 0;
+    Barco  *Barquito2;
+    while (i <= aB.tope)
+      {
+        if (aB.arregloBarco[i]->getid() == idBarco)
+        {
+          Barquito2 = aB.arregloBarco[i];
+          i = aB.tope;
+        }
+        i++;
+      }
+    // try
+    // {  
+      //if(Barquito2->) METER O LO DEL TANCRE DYNAMIC_CAST O METER TRY CATCH EN LA FUNCION ARRIBA?? NO SE SI ESTARIA BIEN, PORQUE CAPAZ QUE SIGUE CORRIENDO EL CODIGO QUE ESTA ABAJO DE DONDE LLAMO ARRIBAR
+        Barquito2->arribar(cargaDespacho);
+        Arribo* a = new Arribo(FechaActual,cargaDespacho,Barquito2);
+        
+        DtBarco Barquito1;
+        i = 0;
+        while (i <= cB.tope)
+          {
+            if (cB.colBarco[i]->get_id() == idBarco)
+            {
+              Barquito1 = *cB.colBarco[i];
+              i = cB.tope;
+            }
+            i++;
+          }
+        
+        DtArribo dta(FechaActual,cargaDespacho,Barquito1);
+        ;
+        
+        i = 0;
+        Puerto* P;
+        while (i <= aP->tope)
+          {
+            if (aP->arr_Puerto[i]->GetPuertoId() == idPuerto)
+            {
+              P = aP->arr_Puerto[i];
+              i = aP->tope;
+            }
+            i++;
+          }
+        
+        P->Puer_Arr.arrA[P->Puer_Arr.tope + 1] = a;
+        P->Puer_Arr.tope++;
+  // }
+  // catch(const std::exception& e)
+  // {
+  //   std::cerr << e.what() << '\n';
+  // }
 }
 
 
