@@ -9,7 +9,7 @@ Puerto :: Puerto(string id, string nombre, DtFecha fecha){
   this->id=id;
   this->nombre=nombre;
   this->fechaCreacion=fecha;
-  for (int i = 0;i<=30;i++){
+  for (int i = 0;i<30;i++){
   	this->Puer_Arr.arrA[i] = NULL;
   }
   this->Puer_Arr.tope = -1;
