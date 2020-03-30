@@ -32,7 +32,6 @@ bool controlIdBarco(string id){
     int i = 0;
     while (i <= aB.tope && !barcoRepetido)
     {
-      cout << "I: " << i << "ID: " << aB.arregloBarco[i]->getid() << "\n";
       if (aB.arregloBarco[i]->getid() == id)
       {
         barcoRepetido = true;
@@ -126,6 +125,7 @@ col_dtPuerto listarPuertos(){
     for (int i = 0;i<=ret.tope;i++){
       DtPuerto *res = new DtPuerto(aP->arr_Puerto[i]->GetPuertoId(),aP->arr_Puerto[i]->GetPuertoNombre(),aP->arr_Puerto[i]->GetPuertoFecha(),obtener_cantarribos(aP->arr_Puerto[i]));
       ret.col_dtP[i] = *res;
+      cout << ret.col_dtP[i];
   }
 }
   return ret;
@@ -133,10 +133,6 @@ col_dtPuerto listarPuertos(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
 {
-
-  time_t t = time(NULL);
-  tm *timePtr = localtime(&t);
-  DtFecha FechaActual(timePtr->tm_mday, timePtr->tm_mon, timePtr->tm_year);
 
   int i = 0;
   Barco *Barquito2;
@@ -149,56 +145,64 @@ void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
     }
     i++;
   }
-  // try
-  // {
-  //if(Barquito2->) METER O LO DEL TANCRE DYNAMIC_CAST O METER TRY CATCH EN LA FUNCION ARRIBA?? NO SE SI ESTARIA BIEN,
-  //PORQUE CAPAZ QUE SIGUE CORRIENDO EL CODIGO QUE ESTA ABAJO DE DONDE LLAMO ARRIBAR
-  Barquito2->arribar(cargaDespacho);
-  Arribo *a = new Arribo(FechaActual, cargaDespacho, Barquito2);
-
-  DtBarco Barquito1;
-  i = 0;
-  while (i <= cB.tope)
+  try
   {
-    if (cB.colBarco[i]->get_id() == idBarco)
-    {
-      Barquito1 = *cB.colBarco[i];
-      i = cB.tope;
+    BarcoPesquero *barcoObj = dynamic_cast<BarcoPesquero *>(Barquito2);
+    
+    if(barcoObj == NULL && cargaDespacho != 0)
+      throw std::invalid_argument("\n La carga despachada no puede ser distinta de 0 cuando arriba un barco de pasajeros.");
+    else if( barcoObj != NULL && (barcoObj->getCarga() - cargaDespacho) > (barcoObj->getCapacidad()) )
+      throw std::invalid_argument("\n Se sobrepasa la capacidad del barco con el valor de carga.");
+    else if( barcoObj != NULL && (barcoObj->getCarga() - cargaDespacho) < 0)
+      throw std::invalid_argument("\n El barco no tiene la suficiente carga como para realizar el arribo.");
+    else{
+        i=0;
+        Puerto *P;
+        while (i <= aP->tope)
+        {
+          if (aP->arr_Puerto[i]->GetPuertoId() == idPuerto)
+          {
+            P = aP->arr_Puerto[i];
+            i = aP->tope;
+          }
+          i++;
+        }
+        if (obtener_cantarribos(P) == 30)
+             throw std::invalid_argument("\n El puerto tiene 30 arribos y no puede tener mas.");
+        else{
+
+          time_t t = time(NULL);
+          tm *timePtr = localtime(&t);
+          DtFecha FechaActual(timePtr->tm_mday, timePtr->tm_mon, timePtr->tm_year + 1900);
+          Barquito2->arribar(cargaDespacho);
+          Arribo *a = new Arribo(FechaActual, cargaDespacho, Barquito2);
+
+          DtBarco Barquito1;
+          i = 0;
+          while (i <= cB.tope)
+          {
+            if (cB.colBarco[i]->get_id() == idBarco)
+            {
+              Barquito1 = *cB.colBarco[i];
+              i = cB.tope;
+            }
+            i++;
+          }
+        
+          DtArribo dta(FechaActual, cargaDespacho, Barquito1);
+
+          P->Puer_Arr.arrA[P->Puer_Arr.tope + 1] = a;
+          P->Puer_Arr.tope++;
+          }
+      }
     }
-    i++;
-  }
-
-  DtArribo dta(FechaActual, cargaDespacho, Barquito1);
-  ;
-
-  i = 0;
-  Puerto *P;
-  while (i <= aP->tope)
-  {
-    if (aP->arr_Puerto[i]->GetPuertoId() == idPuerto)
+    catch(const std::exception& e)
     {
-      P = aP->arr_Puerto[i];
-      i = aP->tope;
+      std::cerr << e.what() << '\n';
     }
-    i++;
-  }
-
-  P->Puer_Arr.arrA[P->Puer_Arr.tope + 1] = a;
-  P->Puer_Arr.tope++;
-  // }
-  // catch(const std::exception& e)
-  // {
-  //   std::cerr << e.what() << '\n';
-  // }
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// struct arr_Arribos{
-//   Arribo* arrA[30];
-//   int tope;
-// };
-
-arr_Arribos obtenerInfoArribosEnPuerto(string idPuerto)
+void obtenerInfoArribosEnPuerto(string idPuerto)
 {
   bool puertoEncontrado = false;
   int i = 0;
@@ -214,8 +218,21 @@ arr_Arribos obtenerInfoArribosEnPuerto(string idPuerto)
     }
   i++;
   }
-  return PuertoSeleccionado->Puer_Arr; //Puerr_Arr está declarado como public
+  i =0;
+  while (i <= PuertoSeleccionado->Puer_Arr.tope )
+  { 
+    cout << "Arribo " << i + 1;
+    cout << "\nBarco id: " << PuertoSeleccionado->Puer_Arr.arrA[i]->GetArriboBarco()->getid() << "  Barco Nombre: " <<  PuertoSeleccionado->Puer_Arr.arrA[i]->GetArriboBarco()->getnombre();
+    cout << "\nCarga despachada: " << PuertoSeleccionado->Puer_Arr.arrA[i]->GetArriboCarga();
+    cout << "\nFecha: " << PuertoSeleccionado->Puer_Arr.arrA[i]->GetArriboFecha().getD() << "/" << PuertoSeleccionado->Puer_Arr.arrA[i]->GetArriboFecha().getM() << "/" << PuertoSeleccionado->Puer_Arr.arrA[i]->GetArriboFecha().getA();
+    cout << "\n\n";
+    i++;
+  }
+  //return PuertoSeleccionado->Puer_Arr; //Puerr_Arr está declarado como public
 }
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void eliminarArribos(string idPuerto, const DtFecha& fecha){}
@@ -238,5 +255,42 @@ void eliminarArribos(string idPuerto, const DtFecha& fecha){}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Col_barcos listarBarcos()
 {
+  Col_barcos cB;
+  for (int j = 0; j <= aB.tope; j++)
+  {
+    Barco *actual = aB.arregloBarco[j];
+    BarcoPesquero *barcoObj = dynamic_cast<BarcoPesquero >(actual);
+    if(barcoObj == NULL){
+        BarcoPasajeros barcoPas = dynamic_cast<BarcoPasajeros>(actual);
+        cB.tope++;
+        DtBarcoPasajeros pas = new DtBarcoPasajeros(barcoPas->getnombre(),barcoPas->getid(),barcoPas->getCantPasajeros(),barcoPas->getTamanio()); 
+        cB.colBarco[cB.tope] = pas;
+    }
+    else{
+       cB.tope++;
+       //DtBarcoPesquero* pes(barcoObj->getnombre(),barcoObj->getid(),barcoObj->getCapacidad(),barcoObj->getCarga())
+       DtBarcoPesquero* pes = new DtBarcoPesquero(barcoObj->getnombre(),barcoObj->getid(),barcoObj->getCapacidad(),barcoObj->getCarga());
+       cB.colBarco[cB.tope] = pes;
+    }
+  }
   return cB;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void imprimirBarcos(){
+    Col_barcos Barcos = listarBarcos();
+    for(int j = 0; j <= Barcos.tope; j++){
+      DtBarco *actual = Barcos.colBarco[j];
+      DtBarcoPesquero *barcoObj = dynamic_cast<DtBarcoPesquero *>(actual);
+      if(barcoObj == NULL){
+        DtBarcoPasajeros barcoPas = dynamic_cast<DtBarcoPasajeros>(actual);
+        cout << *barcoPas;
+        cout << "\n";
+      }
+      else{
+        cout << *barcoObj;
+        cout << "\n";
+      } 
+    } 
 }
