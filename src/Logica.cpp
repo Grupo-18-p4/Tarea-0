@@ -12,7 +12,7 @@ struct Array_barcos
   int tope = -1;
 } aB;
 
-Col_barcos cB;
+
 
 struct Array_puertos
 {
@@ -23,15 +23,16 @@ struct Array_puertos
 typedef Array_puertos *arr_pt;
 arr_pt aP = new Array_puertos;
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool controlIdBarco(string id){
-    bool barcoRepetido = false;
+bool controlIdBarco(string id)
+{
+  bool barcoRepetido = false;
   if (aB.tope >= 0)
   {
     int i = 0;
     while (i <= aB.tope && !barcoRepetido)
     {
+      //cout << "I: " << i << "ID: " << aB.arregloBarco[i]->getid() << "\n";
       if (aB.arregloBarco[i]->getid() == id)
       {
         barcoRepetido = true;
@@ -65,7 +66,7 @@ void agregarBarco(DtBarco &barco)
   {
     cout << "No se pueden agregar mas barcos";
   }
-
+  /*
   if (cB.tope < MAX_BARCOS)
   {
     cB.tope++;
@@ -74,7 +75,7 @@ void agregarBarco(DtBarco &barco)
   else
   {
     cout << "No se pueden agregar mas barcos";
-  }
+  } */
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -202,6 +203,8 @@ void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
     }
 }
 
+
+
 void obtenerInfoArribosEnPuerto(string idPuerto)
 {
   bool puertoEncontrado = false;
@@ -252,18 +255,19 @@ void eliminarArribos(string idPuerto, const DtFecha& fecha){}
     
 }*/
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Col_barcos listarBarcos()
 {
   Col_barcos cB;
   for (int j = 0; j <= aB.tope; j++)
-  {
+  {  
     Barco *actual = aB.arregloBarco[j];
-    BarcoPesquero *barcoObj = dynamic_cast<BarcoPesquero >(actual);
+    BarcoPesquero *barcoObj = dynamic_cast<BarcoPesquero *>(actual);
     if(barcoObj == NULL){
-        BarcoPasajeros barcoPas = dynamic_cast<BarcoPasajeros>(actual);
+        BarcoPasajeros* barcoPas = dynamic_cast<BarcoPasajeros*>(actual);
         cB.tope++;
-        DtBarcoPasajeros pas = new DtBarcoPasajeros(barcoPas->getnombre(),barcoPas->getid(),barcoPas->getCantPasajeros(),barcoPas->getTamanio()); 
+        DtBarcoPasajeros* pas = new DtBarcoPasajeros(barcoPas->getnombre(),barcoPas->getid(),barcoPas->getCantPasajeros(),barcoPas->getTamanio()); 
         cB.colBarco[cB.tope] = pas;
     }
     else{
@@ -284,7 +288,7 @@ void imprimirBarcos(){
       DtBarco *actual = Barcos.colBarco[j];
       DtBarcoPesquero *barcoObj = dynamic_cast<DtBarcoPesquero *>(actual);
       if(barcoObj == NULL){
-        DtBarcoPasajeros barcoPas = dynamic_cast<DtBarcoPasajeros>(actual);
+        DtBarcoPasajeros *barcoPas = dynamic_cast<DtBarcoPasajeros*>(actual);
         cout << *barcoPas;
         cout << "\n";
       }
