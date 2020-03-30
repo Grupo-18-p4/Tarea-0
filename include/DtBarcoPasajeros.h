@@ -17,5 +17,7 @@ class DtBarcoPasajeros: public DtBarco{
     
         //Destructor
         ~DtBarcoPasajeros();
+
+       friend const ostream& operator<< (ostream& os, DtBarcoPasajeros obj);
 };
 #endif
