@@ -15,6 +15,7 @@ class Arribo {
     
     DtFecha GetArriboFecha();
     float GetArriboCarga();
+    Barco* GetArriboBarco();
     ~Arribo();
     Arribo();
     Arribo(DtFecha fecha,float carga,Barco* barco);
