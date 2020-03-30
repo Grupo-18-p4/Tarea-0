@@ -16,7 +16,7 @@
 struct array_barcos;
 struct Array_puertos;
 struct Col_barcos{
-  DtBarco *colBarco[32];
+  DtBarco *colBarco[MAX_PUERTOS];
   int tope = -1;
 }; 
 struct col_dtPuerto{
@@ -32,7 +32,8 @@ void agregarPuerto(string id, string nombre, const DtFecha& fechaCreacion);
 void agregarArribo(string idPuerto, string idBarco, float cargaDespacho);
 void eliminarArribos(string idPuerto, const DtFecha& fecha);
 Col_barcos listarBarcos();
-arr_Arribos obtenerInfoArribosEnPuerto(string idPuerto);
+void obtenerInfoArribosEnPuerto(string idPuerto);
 col_dtPuerto listarPuertos();
+void imprimirBarcos();
 #endif
 
