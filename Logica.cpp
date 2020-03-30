@@ -125,6 +125,7 @@ col_dtPuerto listarPuertos(){
     for (int i = 0;i<=ret.tope;i++){
       DtPuerto *res = new DtPuerto(aP->arr_Puerto[i]->GetPuertoId(),aP->arr_Puerto[i]->GetPuertoNombre(),aP->arr_Puerto[i]->GetPuertoFecha(),obtener_cantarribos(aP->arr_Puerto[i]));
       ret.col_dtP[i] = *res;
+      cout << ret.col_dtP[i];
   }
 }
   return ret;
