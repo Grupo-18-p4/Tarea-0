@@ -135,72 +135,72 @@ col_dtPuerto listarPuertos(){
 void agregarArribo(string idPuerto, string idBarco, float cargaDespacho)
 {
 
-  int i = 0;
-  Barco *Barquito2;
-  while (i <= aB.tope)
-  {
-    if (aB.arregloBarco[i]->getid() == idBarco)
-    {
-      Barquito2 = aB.arregloBarco[i];
-      i = aB.tope;
-    }
-    i++;
-  }
-  try
-  {
-    BarcoPesquero *barcoObj = dynamic_cast<BarcoPesquero *>(Barquito2);
+  // int i = 0;
+  // Barco *Barquito2;
+  // while (i <= aB.tope)
+  // {
+  //   if (aB.arregloBarco[i]->getid() == idBarco)
+  //   {
+  //     Barquito2 = aB.arregloBarco[i];
+  //     i = aB.tope;
+  //   }
+  //   i++;
+  // }
+  // try
+  // {
+  //   BarcoPesquero *barcoObj = dynamic_cast<BarcoPesquero *>(Barquito2);
     
-    if(barcoObj == NULL && cargaDespacho != 0)
-      throw std::invalid_argument("\n La carga despachada no puede ser distinta de 0 cuando arriba un barco de pasajeros.");
-    else if( barcoObj != NULL && (barcoObj->getCarga() - cargaDespacho) > (barcoObj->getCapacidad()) )
-      throw std::invalid_argument("\n Se sobrepasa la capacidad del barco con el valor de carga.");
-    else if( barcoObj != NULL && (barcoObj->getCarga() - cargaDespacho) < 0)
-      throw std::invalid_argument("\n El barco no tiene la suficiente carga como para realizar el arribo.");
-    else{
-        i=0;
-        Puerto *P;
-        while (i <= aP->tope)
-        {
-          if (aP->arr_Puerto[i]->GetPuertoId() == idPuerto)
-          {
-            P = aP->arr_Puerto[i];
-            i = aP->tope;
-          }
-          i++;
-        }
-        if (obtener_cantarribos(P) == 30)
-             throw std::invalid_argument("\n El puerto tiene 30 arribos y no puede tener mas.");
-        else{
+  //   if(barcoObj == NULL && cargaDespacho != 0)
+  //     throw std::invalid_argument("\n La carga despachada no puede ser distinta de 0 cuando arriba un barco de pasajeros.");
+  //   else if( barcoObj != NULL && (barcoObj->getCarga() - cargaDespacho) > (barcoObj->getCapacidad()) )
+  //     throw std::invalid_argument("\n Se sobrepasa la capacidad del barco con el valor de carga.");
+  //   else if( barcoObj != NULL && (barcoObj->getCarga() - cargaDespacho) < 0)
+  //     throw std::invalid_argument("\n El barco no tiene la suficiente carga como para realizar el arribo.");
+  //   else{
+  //       i=0;
+  //       Puerto *P;
+  //       while (i <= aP->tope)
+  //       {
+  //         if (aP->arr_Puerto[i]->GetPuertoId() == idPuerto)
+  //         {
+  //           P = aP->arr_Puerto[i];
+  //           i = aP->tope;
+  //         }
+  //         i++;
+  //       }
+  //       if (obtener_cantarribos(P) == 30)
+  //            throw std::invalid_argument("\n El puerto tiene 30 arribos y no puede tener mas.");
+  //       else{
 
-          time_t t = time(NULL);
-          tm *timePtr = localtime(&t);
-          DtFecha FechaActual(timePtr->tm_mday, timePtr->tm_mon, timePtr->tm_year + 1900);
-          Barquito2->arribar(cargaDespacho);
-          Arribo *a = new Arribo(FechaActual, cargaDespacho, Barquito2);
+  //         time_t t = time(NULL);
+  //         tm *timePtr = localtime(&t);
+  //         DtFecha FechaActual(timePtr->tm_mday, timePtr->tm_mon, timePtr->tm_year + 1900);
+  //         Barquito2->arribar(cargaDespacho);
+  //         Arribo *a = new Arribo(FechaActual, cargaDespacho, Barquito2);
 
-          DtBarco Barquito1;
-          i = 0;
-          while (i <= cB.tope)
-          {
-            if (cB.colBarco[i]->get_id() == idBarco)
-            {
-              Barquito1 = *cB.colBarco[i];
-              i = cB.tope;
-            }
-            i++;
-          }
+  //         DtBarco Barquito1;
+  //         i = 0;
+  //         while (i <= cB.tope)
+  //         {
+  //           if (cB.colBarco[i]->get_id() == idBarco)
+  //           {
+  //             Barquito1 = *cB.colBarco[i];
+  //             i = cB.tope;
+  //           }
+  //           i++;
+  //         }
         
-          DtArribo dta(FechaActual, cargaDespacho, Barquito1);
+  //         DtArribo dta(FechaActual, cargaDespacho, Barquito1);
 
-          P->Puer_Arr.arrA[P->Puer_Arr.tope + 1] = a;
-          P->Puer_Arr.tope++;
-          }
-      }
-    }
-    catch(const std::exception& e)
-    {
-      std::cerr << e.what() << '\n';
-    }
+  //         P->Puer_Arr.arrA[P->Puer_Arr.tope + 1] = a;
+  //         P->Puer_Arr.tope++;
+  //         }
+  //     }
+  //   }
+  //   catch(const std::exception& e)
+  //   {
+  //     std::cerr << e.what() << '\n';
+  //   }
 }
 
 
