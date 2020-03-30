@@ -19,6 +19,6 @@ class DtPuerto {
         DtFecha getfecha();
         int getcant();
 };
-
+ostream& operator << (ostream &os, DtPuerto & dtp);
 #endif
 
