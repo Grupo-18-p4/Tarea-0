@@ -100,7 +100,7 @@ int main()
                         cout << "Ingrese una opcion correcta\n";
                         break;
                     }
-                    cout << "Carga: ";
+                    cout << "Cantidad de pasajeros: ";
                     cin >> cantPasajeros;
                     DtBarcoPasajeros barcoPas(nombre, id, cantPasajeros, tam);
                     agregarBarco(barcoPas);
@@ -127,6 +127,15 @@ int main()
         case 4: //Agregar arribo
             try
             {
+
+                /////////////////////////////PARA no tener que agregar puerto y barco cada vez que testeo, porngo esto asi no me olvido de sacarlo si lo lees es porque me olvide
+                // DtFecha FechaPuerto(01, 8, 1990);
+                // agregarPuerto("1", "puto", FechaPuerto);
+                // DtBarcoPasajeros barcoPas("GaY", "0",20 , crucero);
+                // agregarBarco(barcoPas);
+                // DtBarcoPesquero barcoPes("gAYEST","1" ,80, 10);
+                // agregarBarco(barcoPes);
+
                 cout << "Ingrese el id del barco: ";
                 cin >> idb;
 
