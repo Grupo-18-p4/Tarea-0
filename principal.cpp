@@ -125,17 +125,8 @@ int main()
             
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 4: //Agregar arribo
-            try
+            try//agregar exception de cuando se le intenta agregar arribo de mas a puerto
             {
-
-                /////////////////////////////PARA no tener que agregar puerto y barco cada vez que testeo, porngo esto asi no me olvido de sacarlo si lo lees es porque me olvide
-                // DtFecha FechaPuerto(01, 8, 1990);
-                // agregarPuerto("1", "puto", FechaPuerto);
-                // DtBarcoPasajeros barcoPas("GaY", "0",20 , crucero);
-                // agregarBarco(barcoPas);
-                // DtBarcoPesquero barcoPes("gAYEST","1" ,80, 10);
-                // agregarBarco(barcoPes);
-
                 cout << "Ingrese el id del barco: ";
                 cin >> idb;
 
@@ -150,7 +141,7 @@ int main()
 
                         if (!idPuertoRepetido(idp))
                             throw std::invalid_argument("\n No existe un puerto con ese identificador.");
-                        else
+                        else 
                         {
                             cout << "\n Ingrese la carga de despacho: ";
                             cin >> cargaDespacho;
@@ -173,15 +164,18 @@ int main()
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 5: //Obtener arribos en puerto
         {
+            cout << "\n Ingrese el id del puerto: ";
+            cin >> idp;
+
             try
             {
-                cout << "\n Ingrese el id del puerto: ";
-                cin >> idp;
                 if (!idPuertoRepetido(idp))
                     throw std::invalid_argument("\n No existe un puerto con ese identificador.");
                 else
                 {
-                    arr_Arribos arribosdePuerto = obtenerInfoArribosEnPuerto(idp);
+
+                    //arr_Arribos arribosdePuerto = obtenerInfoArribosEnPuerto(idp);
+                    obtenerInfoArribosEnPuerto(idp);
                 }
             }
             catch (const std::exception &e)
@@ -231,6 +225,7 @@ int main()
         default:
             cout << "Opción no válida, volviendo...\n";
             break;
-        } //switch
+        }
+        //switch
     }     //While
 } // Main
