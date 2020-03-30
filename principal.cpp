@@ -21,6 +21,7 @@ int main()
         cout << "5) Obtener arribos en puerto" << '\n';
         cout << "6) Eliminar arribos" << '\n';
         cout << "7) Listar barcos" << '\n';
+        cout << "8) Imprimir barcos" << '\n';
         cout << "0) Salir" << '\n';
         cout << ">> ";
         cin >> opcion;
@@ -122,10 +123,10 @@ int main()
             col_dtPuerto ListaPuertos = listarPuertos();
             break;
         }
-            
+
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 4: //Agregar arribo
-            try//agregar exception de cuando se le intenta agregar arribo de mas a puerto
+              try//agregar exception de cuando se le intenta agregar arribo de mas a puerto
             {
                 cout << "Ingrese el id del barco: ";
                 cin >> idb;
@@ -141,7 +142,7 @@ int main()
 
                         if (!idPuertoRepetido(idp))
                             throw std::invalid_argument("\n No existe un puerto con ese identificador.");
-                        else 
+                        else
                         {
                             cout << "\n Ingrese la carga de despacho: ";
                             cin >> cargaDespacho;
@@ -162,7 +163,7 @@ int main()
 
             break;
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        case 5: //Obtener arribos en puerto
+          case 5: //Obtener arribos en puerto
         {
             cout << "\n Ingrese el id del puerto: ";
             cin >> idp;
@@ -186,7 +187,7 @@ int main()
         break;
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 6: //Eliminar arribos
-                { try
+                /*      { try
                     {   cout << "\n Ingrese el id del puerto: ";
                         cin >> idp;
                         if (!idPuertoRepetido(idp))
@@ -209,13 +210,18 @@ int main()
                     {
                     std::cerr << e.what() << '\n';
                     }}
-            break;
+            break;*/
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 7:
         {
             Col_barcos Barcos = listarBarcos();
+            cout << Barcos.colBarco[Barcos.tope]->get_id();
+            //cout << Barcos.tope;
         }
-            
+            break;
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case 8:
+            imprimirBarcos();
             break;
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case 0: //Salir
@@ -225,7 +231,6 @@ int main()
         default:
             cout << "Opción no válida, volviendo...\n";
             break;
-        }
-        //switch
+        } //switch
     }     //While
 } // Main
